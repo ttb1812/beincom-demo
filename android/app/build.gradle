@@ -1,6 +1,14 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
+
+project.ext.envConfigFiles = [
+    dev: ".env",
+    staging: ".env.staging",
+    production: ".env.production",
+]
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -76,18 +84,30 @@ android {
 
     namespace "com.beincomdemo"
     defaultConfig {
-        applicationId "com.beincomdemo"
+        applicationId project.env.get("ANDROID_APP_ID")
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode Integer.valueOf(project.env.get("ANDROID_APP_VERSION_CODE"))
+        versionName project.env.get("ANDROID_APP_VERSION_NAME")
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+            storeFile file(env.get("STORE_FILE"))
+            storePassword env.get("STORE_PASSWORD")
+            keyAlias env.get("KEY_ALIAS")
+            keyPassword env.get("KEY_PASSWORD")
+        }
+        staging {
+            storeFile file(env.get("STORE_FILE"))
+            storePassword env.get("STORE_PASSWORD")
+            keyAlias env.get("KEY_ALIAS")
+            keyPassword env.get("KEY_PASSWORD")
+        }
+        production {
+            storeFile file(env.get("STORE_FILE"))
+            storePassword env.get("STORE_PASSWORD")
+            keyAlias env.get("KEY_ALIAS")
+            keyPassword env.get("KEY_PASSWORD")
         }
     }
     buildTypes {
@@ -97,11 +117,30 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.production
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    flavorDimensions "enviroment"
+    productFlavors {
+        dev {
+            dimension "enviroment"
+            resValue "string", "app_name", project.project.env.get("APP_NAME")
+            signingConfig signingConfigs.debug
+        }
+        staging {
+            dimension "enviroment"
+            resValue "string", "app_name", project.project.env.get("APP_NAME")
+            signingConfig signingConfigs.staging
+        }
+        production {
+            dimension "enviroment"
+            resValue "string", "app_name", project.project.env.get("APP_NAME")
+            signingConfig signingConfigs.production
+        }
+    }
+
 }
 
 dependencies {
@@ -116,3 +155,4 @@ dependencies {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+

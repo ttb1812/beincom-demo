@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "ENVFILE=.env react-native run-android --mode=devDebug --appId 'com.beincom.demo.dev'",
+    "android-staging": "ENVFILE=.env.staging react-native run-android --mode=stagingDebug --appId 'com.beincom.demo.staging'",
+    "android-pro": "ENVFILE=.env.pro react-native run-android --mode=productionDebug --appId 'com.beincom.demo'",
     "ios": "ENVFILE=.env react-native run-ios --scheme BeincomDemoDev --simulator=\"iPhone 15 Pro Max\"",
     "ios-staging": "ENVFILE=.env.staging react-native run-ios --scheme BeincomDemoStaging --simulator=\"iPhone 15 Pro Max\"",
     "ios-pro": "ENVFILE=.env.pro react-native run-ios --scheme BeincomDemoPro --simulator=\"iPhone 15 Pro Max\"",

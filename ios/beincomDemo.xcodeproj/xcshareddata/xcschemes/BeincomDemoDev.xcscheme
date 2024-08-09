@@ -5,6 +5,15 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;.env&quot; &gt; /tmp/envfile  &#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -17,13 +26,13 @@
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "beincomDemo.app"
                BlueprintName = "beincomDemo"
-               ReferencedContainer = "container:beincomDemo.xcodeproj">
+               ReferencedContainer = "container:BeincomDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "DebugDev"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
@@ -35,13 +44,13 @@
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
                BuildableName = "beincomDemoTests.xctest"
                BlueprintName = "beincomDemoTests"
-               ReferencedContainer = "container:beincomDemo.xcodeproj">
+               ReferencedContainer = "container:BeincomDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "DebugDev"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -57,12 +66,12 @@
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "beincomDemo.app"
             BlueprintName = "beincomDemo"
-            ReferencedContainer = "container:beincomDemo.xcodeproj">
+            ReferencedContainer = "container:BeincomDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Release"
+      buildConfiguration = "ReleaseDev"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -74,15 +83,15 @@
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "beincomDemo.app"
             BlueprintName = "beincomDemo"
-            ReferencedContainer = "container:beincomDemo.xcodeproj">
+            ReferencedContainer = "container:BeincomDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "DebugDev">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "ReleaseDev"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

@@ -4671,6 +4671,7 @@ __metadata:
     react-native: "npm:0.74.5"
     react-native-config: "npm:^1.5.3"
     react-native-device-info: "npm:^11.1.0"
+    react-native-fast-image: "npm:^8.6.3"
     react-native-iphone-screen-helper: "npm:^2.1.1"
     react-native-safe-area-context: "npm:^4.10.8"
     react-native-screens: "npm:^3.34.0"
@@ -9573,6 +9574,16 @@ __metadata:
   peerDependencies:
     react-native: "*"
   checksum: 10c0/424eb512a35264699d0f1c2f9dce2b0ca10247fbe263af37eda5563d9eb5fb333ea513c90aa58444b67d7364ac03d9a0d9cf913a0054e78ec0f2dfff22033ab0
+  languageName: node
+  linkType: hard
+
+"react-native-fast-image@npm:^8.6.3":
+  version: 8.6.3
+  resolution: "react-native-fast-image@npm:8.6.3"
+  peerDependencies:
+    react: ^17 || ^18
+    react-native: ">=0.60.0"
+  checksum: 10c0/4ebeae53ffeadf1e7e5e133c1cfda81f9efe978f9ece10c732a0338149fe9104681bfdabc8427dad7c934b02bfcbd0e205bb6ca43e2844abc6054630ebe34454
   languageName: node
   linkType: hard
 

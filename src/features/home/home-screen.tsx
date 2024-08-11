@@ -1,13 +1,36 @@
 import React, { memo } from 'react';
-import { Box, Text, Container } from '../../common/components';
 import { StyleSheet } from 'react-native';
+import {
+  Container,
+  Content,
+  Header,
+  IconButton,
+  Text,
+} from '../../common/components';
+import { NavigationService, ScreenName, useAppTheme } from '../../common/utils';
 
 const HomeScreen = () => {
+  const theme = useAppTheme();
   return (
-    <Container style={styles.container}>
-      <Box>
+    <Container
+      style={styles.container}
+      headerComponent={Header}
+      headerProps={{
+        title: 'Home',
+        showBackButton: false,
+        rightButtonComponent: (
+          <IconButton
+            svg={theme.icons.notificationBold}
+            onPress={() => {
+              NavigationService.navigate(ScreenName.notificationsScreen);
+            }}
+          />
+        ),
+      }}
+    >
+      <Content contentContainerStyle={styles.content}>
         <Text>HomeScreen</Text>
-      </Box>
+      </Content>
     </Container>
   );
 };
@@ -16,7 +39,10 @@ export default memo(HomeScreen);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  content: {
     justifyContent: 'center',
     alignItems: 'center',
   },

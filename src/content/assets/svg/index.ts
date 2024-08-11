@@ -7,6 +7,8 @@ import { homeBold } from './home-bold';
 import { calendarBold } from './calendar-bold';
 import { tasksBold } from './tasks-bold';
 import { profileBold } from './profile-bold';
+import { notificationBold } from './notification-bold';
+import { arrowLeft } from './arrow-left';
 export const icons = {
   home,
   calendar,
@@ -17,4 +19,6 @@ export const icons = {
   calendarBold,
   tasksBold,
   profileBold,
+  notificationBold,
+  arrowLeft,
 } as const;

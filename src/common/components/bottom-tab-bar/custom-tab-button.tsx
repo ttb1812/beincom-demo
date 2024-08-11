@@ -51,7 +51,7 @@ const CustomTabButton = (props: ICustomTabButtonProps) => {
             height={ICONS_SIZE}
           />
         );
-      case ScreenName.addTaskScreen:
+      case ScreenName.addTaskBtn:
         return (
           <SvgFromString
             svg={theme.icons.addCircle}
@@ -109,7 +109,7 @@ const CustomTabButton = (props: ICustomTabButtonProps) => {
   ]);
 
   const _renderLabel = useCallback(() => {
-    if (routeName !== ScreenName.addTaskScreen && isFocused) {
+    if (routeName !== ScreenName.addTaskBtn && isFocused) {
       return (
         <Box>
           <Text variants="caption2" color={theme.palette.primary1}>
@@ -126,7 +126,7 @@ const CustomTabButton = (props: ICustomTabButtonProps) => {
       onLongPress={onLongPress}
       style={[
         styles.conatiner,
-        routeName === ScreenName.addTaskScreen && styles.addTaskBtn,
+        routeName === ScreenName.addTaskBtn && styles.addTaskBtn,
       ]}
     >
       <Box>{_renderTabIcon()}</Box>

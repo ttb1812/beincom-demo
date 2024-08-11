@@ -2,6 +2,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React, { memo, useCallback, useMemo } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import {
+  NavigationService,
   scaledSize,
   ScreenName,
   StackNavigation,
@@ -31,28 +32,27 @@ const BottomTabBar = (props: BottomTabBarProps) => {
               canPreventDefault: true,
             });
 
-            if (route?.name === ScreenName.addTaskScreen) {
-              //do something
-              return;
-            }
-
-            if (!isFocused && !event.defaultPrevented) {
-              (navigation as unknown as StackNavigation)?.navigate<any>({
-                name: route.name,
-                merge: true,
-              });
+            if (route?.name === ScreenName.addTaskBtn) {
+              NavigationService.navigate(ScreenName.addTaskScreen);
+            } else {
+              if (!isFocused && !event.defaultPrevented) {
+                (navigation as unknown as StackNavigation)?.navigate<any>({
+                  name: route.name,
+                  merge: true,
+                });
+              }
             }
           };
 
           const onLongPress = () => {
-            if (route?.name === ScreenName.addTaskScreen) {
-              //do something
-              return;
+            if (route?.name === ScreenName.addTaskBtn) {
+              NavigationService.navigate(ScreenName.addTaskScreen);
+            } else {
+              navigation.emit({
+                type: 'tabLongPress',
+                target: route.key,
+              });
             }
-            navigation.emit({
-              type: 'tabLongPress',
-              target: route.key,
-            });
           };
 
           return (

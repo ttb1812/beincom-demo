@@ -20,7 +20,7 @@ const TABS = [
     textTranslate: 'Calendar',
   },
   {
-    key: ScreenName.addTaskScreen,
+    key: ScreenName.addTaskBtn,
     textTranslate: 'Add',
   },
   {

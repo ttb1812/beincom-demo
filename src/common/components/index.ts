@@ -4,3 +4,6 @@ export * from './container';
 export * from './image';
 export * from './bottom-tab-bar';
 export * from './svg-from-string';
+export * from './header';
+export * from './content';
+export * from './icon-button';

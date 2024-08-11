@@ -1,3 +1,4 @@
+import images from '../assets/images';
 import styles from '../styles';
 import borderWidths from './borders';
 import { fontFamily } from './fonts';
@@ -22,4 +23,5 @@ export const theme = {
   sizes,
   borderWidths,
   styles,
+  images,
 } as const;

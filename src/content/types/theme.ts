@@ -5,7 +5,7 @@ import sizes from '../theme/sizes';
 
 type StyleType = typeof styles;
 
-type theme = typeof theme;
+type theme = typeof theme | any;
 
 export type SpacingType = keyof typeof theme.space;
 
@@ -64,6 +64,7 @@ export type IBorderWidth<Keys extends string = never> = {
 };
 
 export interface ICustomTheme extends theme {
+  images: Record<string, any>;
   styles: Partial<StyleType> & Record<string, any>;
   dark: boolean;
 }

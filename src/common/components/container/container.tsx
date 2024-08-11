@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useMemo } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Box } from '../box';
 import { IContainerProps } from './types';
 import { Image } from '../image';
@@ -16,6 +16,7 @@ const Container = (props: IContainerProps) => {
         <Image
           style={styles.backgroundImage}
           source={theme.images.background}
+          showSkeletonLoading={false}
         />
       </Box>
     );

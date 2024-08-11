@@ -79,7 +79,11 @@ const BottomTabBar = (props: BottomTabBarProps) => {
 
   return (
     <Box style={[styles.container, styles.overlay]}>
-      <Image source={theme.images.bottomTabBar} style={[styles.container]} />
+      <Image
+        source={theme.images.bottomTabBar}
+        style={[styles.container]}
+        showSkeletonLoading={false}
+      />
       {_renderOverlayView()}
     </Box>
   );

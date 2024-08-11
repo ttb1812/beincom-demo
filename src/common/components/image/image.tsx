@@ -12,7 +12,12 @@ const Image = (props: ImageProps) => {
   const [isLoaded, setIsLoaded] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const { thumbnail, source, showImageFullScreen = false } = props;
+  const {
+    thumbnail,
+    source,
+    showImageFullScreen = false,
+    showSkeletonLoading = true,
+  } = props;
 
   const onLoadStart = useCallback(() => {
     if (!isLoaded) {
@@ -70,7 +75,11 @@ const Image = (props: ImageProps) => {
           style={stylesImage}
           source={formattedSource}
         >
-          {ternaryOperator(isLoading || !isLoaded, _renderSkeleton(), null)}
+          {ternaryOperator(
+            showSkeletonLoading && (isLoading || !isLoaded),
+            _renderSkeleton(),
+            null,
+          )}
         </FastImage>
       </View>
     </Pressable>

@@ -4,6 +4,7 @@ import React, { memo, useEffect } from 'react';
 import { navigationRef, withTheme } from '../../../common/utils';
 import { AuthGuard } from '../../auth';
 import { Platform, StatusBar } from 'react-native';
+import { PortalProvider } from '@gorhom/portal';
 
 const ApplicationNavigator = memo(() => {
   return (
@@ -26,7 +27,9 @@ const AppStartup = () => {
   }, []);
   return (
     <NativeBaseProvider theme={theme}>
-      <ApplicationNavigator />
+      <PortalProvider>
+        <ApplicationNavigator />
+      </PortalProvider>
     </NativeBaseProvider>
   );
 };

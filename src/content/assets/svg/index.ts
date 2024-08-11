@@ -9,6 +9,10 @@ import { tasksBold } from './tasks-bold';
 import { profileBold } from './profile-bold';
 import { notificationBold } from './notification-bold';
 import { arrowLeft } from './arrow-left';
+import { arrowDown } from './arrow-down';
+import { calendarPicker } from './calendar-picker';
+import { cancle } from './cancle';
+import { check } from './check';
 export const icons = {
   home,
   calendar,
@@ -21,4 +25,8 @@ export const icons = {
   profileBold,
   notificationBold,
   arrowLeft,
+  arrowDown,
+  calendarPicker,
+  cancle,
+  check,
 } as const;

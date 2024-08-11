@@ -6,6 +6,7 @@ import { HomeScreen } from '../../../home';
 import { ProfileScreen } from '../../../profile';
 import { TasksScreen } from '../../../tasks';
 import { IBottomTab } from './types';
+import { BottomTabBar } from '../../../../common/components';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +18,10 @@ const TABS = [
   {
     key: ScreenName.calendarScreen,
     textTranslate: 'Calendar',
+  },
+  {
+    key: ScreenName.addTaskScreen,
+    textTranslate: 'Add',
   },
   {
     key: ScreenName.tasksScreen,
@@ -62,6 +67,9 @@ const BottomTabNavigator = () => {
       initialRouteName={ScreenName.homeScreen}
       screenOptions={{
         headerShown: false,
+      }}
+      tabBar={props => {
+        return <BottomTabBar {...props} />;
       }}
     >
       {tabs?.map(tabItem => {

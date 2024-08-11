@@ -1,11 +1,13 @@
 import React, { memo } from 'react';
-import { Box, Text } from '../../common/components';
+import { Box, Container, Text } from '../../common/components';
 
 const CalendarScreen = () => {
   return (
-    <Box flex center>
-      <Text>CalendarScreen</Text>
-    </Box>
+    <Container>
+      <Box flex center>
+        <Text>CalendarScreen</Text>
+      </Box>
+    </Container>
   );
 };
 

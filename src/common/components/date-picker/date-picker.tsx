@@ -70,8 +70,6 @@ const makeStyles = (theme: ITheme) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      borderWidth: 0.5,
-      borderColor: theme.palette.neutral5,
     },
     title: {
       fontWeight: '400',

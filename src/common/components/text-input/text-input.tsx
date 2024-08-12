@@ -41,8 +41,6 @@ const makeStyles = (theme: ITheme) =>
       backgroundColor: theme.palette.neutral6,
       borderRadius: scaledSize.moderateScale(16),
       padding: scaledSize.moderateScale(16),
-      borderWidth: 0.5,
-      borderColor: theme.palette.neutral5,
     },
     title: {
       fontWeight: '400',

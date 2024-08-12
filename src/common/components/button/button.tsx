@@ -7,12 +7,19 @@ import { ITheme, scaledSize, useAppTheme } from '../../utils';
 
 const Button = (props: IButtonProps) => {
   const theme = useAppTheme();
-  const { text, textColor = theme.palette.neutral6, onPress } = props;
+  const {
+    text,
+    textColor = theme.palette.neutral6,
+    onPress,
+    textVariants = 'title1',
+    style,
+    styleTxt,
+  } = props;
 
   const styles = useMemo(() => makeStyles(theme), [theme]);
   return (
-    <NBButton style={styles.container} onPress={onPress}>
-      <Text variants="title1" color={textColor}>
+    <NBButton style={[styles.container, style]} onPress={onPress}>
+      <Text variants={textVariants} color={textColor} style={styleTxt}>
         {text}
       </Text>
     </NBButton>

@@ -19,6 +19,7 @@ const Content = (props: IContent) => {
       style={[styles.container, style]}
       contentContainerStyle={[styles.content, contentContainerStyle]}
       enableAutomaticScroll={false}
+      showsVerticalScrollIndicator={false}
       {...restProps}
     >
       {children}
@@ -35,7 +36,6 @@ const makeStyles = () =>
       width: scaledSize.deviceWidth,
     },
     content: {
-      flex: 1,
-      margin: scaledSize.moderateScale(22),
+      padding: scaledSize.moderateScale(22),
     },
   });

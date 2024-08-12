@@ -13,3 +13,4 @@ export * from './date-picker';
 export * from './footer';
 export * from './button';
 export * from './drawer';
+export * from './section';

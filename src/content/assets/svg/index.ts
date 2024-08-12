@@ -13,6 +13,19 @@ import { arrowDown } from './arrow-down';
 import { calendarPicker } from './calendar-picker';
 import { cancle } from './cancle';
 import { check } from './check';
+import { arrowRightBold } from './arrow-right-bold';
+import { clock } from './clock';
+import { calendarStick } from './calendar-stick';
+import { calendarDate } from './calendar-date';
+import { numSeven } from './num-seven';
+import { profileTick } from './profile-tick';
+import { shareBold } from './share-bold';
+import { messages } from './messges';
+import { cloud } from './cloud';
+import { global } from './global';
+import { elementPlus } from './element-plus';
+import { brush } from './brush';
+import { more } from './more';
 export const icons = {
   home,
   calendar,
@@ -29,4 +42,17 @@ export const icons = {
   calendarPicker,
   cancle,
   check,
+  arrowRightBold,
+  clock,
+  calendarStick,
+  calendarDate,
+  numSeven,
+  profileTick,
+  shareBold,
+  messages,
+  cloud,
+  globalIcon: global,
+  elementPlus,
+  brush,
+  more,
 } as const;

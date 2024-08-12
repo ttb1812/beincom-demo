@@ -1,16 +1,25 @@
-import React, { memo } from 'react';
-import { StyleSheet } from 'react-native';
+import React, { memo, useCallback } from 'react';
+import { Platform, StyleSheet } from 'react-native';
 import {
   Container,
   Content,
   Header,
   IconButton,
-  Text,
+  Box,
 } from '../../common/components';
-import { NavigationService, ScreenName, useAppTheme } from '../../common/utils';
+import {
+  NavigationService,
+  scaledSize,
+  ScreenName,
+  useAppTheme,
+} from '../../common/utils';
+import { InProgress, TaskGroups, TodayTask } from './components';
 
 const HomeScreen = () => {
   const theme = useAppTheme();
+  const _renderBottomSpace = useCallback(() => {
+    return <Box style={styles.bottomSpace} />;
+  }, []);
   return (
     <Container
       style={styles.container}
@@ -28,8 +37,11 @@ const HomeScreen = () => {
         ),
       }}
     >
-      <Content contentContainerStyle={styles.content}>
-        <Text>HomeScreen</Text>
+      <Content contentContainerStyle={styles.content} scrollEnabled>
+        <TodayTask />
+        <InProgress />
+        <TaskGroups />
+        {_renderBottomSpace()}
       </Content>
     </Container>
   );
@@ -43,7 +55,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   content: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingTop: scaledSize.moderateScale(22),
+    paddingHorizontal: 0,
+  },
+  bottomSpace: {
+    height: Platform.select({
+      android: scaledSize.verticalScale(88),
+      ios: scaledSize.verticalScale(100),
+    }),
   },
 });

@@ -7,4 +7,6 @@ export const ScreenName = {
   addTaskScreen: 'addTaskScreen',
   addTaskBtn: 'addTaskBtn',
   notificationsScreen: 'notificationsScreen',
+  manageCategoryScreen: 'manageCategoryScreen',
+  themeScreen: 'themeScreen',
 } as const;

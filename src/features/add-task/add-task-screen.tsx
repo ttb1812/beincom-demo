@@ -11,7 +11,7 @@ import {
   Button,
   Box,
 } from '../../common/components';
-import { NavigationService, scaledSize } from '../../common/utils';
+import { NavigationService, scaledSize, ScreenName } from '../../common/utils';
 
 const AddTaskScreen = () => {
   const PADDING_TOP = scaledSize.moderateScale(24);
@@ -39,7 +39,10 @@ const AddTaskScreen = () => {
         </Box>
       </Content>
       <Footer>
-        <Button text="Add" onPress={() => NavigationService.goBack()} />
+        <Button
+          text="Add"
+          onPress={() => NavigationService.navigate(ScreenName.tasksScreen)}
+        />
       </Footer>
     </Container>
   );

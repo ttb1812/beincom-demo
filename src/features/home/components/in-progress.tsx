@@ -1,6 +1,11 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { Box, Text } from '../../../common/components';
+import {
+  Box,
+  ProgressBar,
+  SvgFromString,
+  Text,
+} from '../../../common/components';
 import { ITheme, scaledSize, useAppTheme } from '../../../common/utils';
 
 const MOCK_DATA = new Array(6);
@@ -31,10 +36,21 @@ const InProgress = () => {
   const _renderProgressItem = useCallback(() => {
     return (
       <Box style={styles.progressItemContainer}>
-        <Text>sdkfsjdh</Text>
+        <Box rowAlignCenter justifyContent="space-between">
+          <Text variants="title3">Office Project</Text>
+          <Box>
+            <SvgFromString svg={theme.icons.more} />
+          </Box>
+        </Box>
+        <Box>
+          <Text variants="title2" numberOfLines={2}>
+            Grocery shopping app design
+          </Text>
+        </Box>
+        <ProgressBar current={50} goal={100} />
       </Box>
     );
-  }, [styles.progressItemContainer]);
+  }, [styles.progressItemContainer, theme.icons.more]);
 
   return (
     <Box paddingTop={scaledSize.moderateScale(28)}>
@@ -81,8 +97,9 @@ const makeStyles = (theme: ITheme) =>
     progressItemContainer: {
       width: scaledSize.scale(300),
       height: scaledSize.verticalScale(160),
-      backgroundColor: 'red',
+      backgroundColor: '#E7F3FF',
       borderRadius: scaledSize.moderateScale(24),
       padding: scaledSize.moderateScale(22),
+      justifyContent: 'space-between',
     },
   });

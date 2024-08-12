@@ -1,5 +1,12 @@
 import React, { memo, useCallback, useMemo } from 'react';
-import { Box, Container, Section, Button } from '../../common/components';
+import {
+  Box,
+  Container,
+  Section,
+  Button,
+  Drawer,
+  Text,
+} from '../../common/components';
 import { ProfileInformation } from './components';
 import { ITheme, logger, scaledSize, useAppTheme } from '../../common/utils';
 import useProfileScreen from './use-profile-screen';
@@ -7,34 +14,43 @@ import { FlatList, StyleSheet } from 'react-native';
 import { IMainMenu } from './types';
 
 const ProfileScreen = () => {
-  const { mainMenuConfig } = useProfileScreen();
+  const {
+    mainMenuConfig,
+    onPressItem,
+    drawerLanguageVisible,
+    setdrawerLanguageVisible,
+  } = useProfileScreen();
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
 
-  const _renderItem = useCallback((data: IMainMenu) => {
-    return (
-      <Section.Container title={data.sectionName}>
-        <FlatList
-          data={data.item}
-          keyExtractor={item => item.key}
-          renderItem={({ item }) => {
-            return (
-              <Section.Item
-                key={item.key}
-                icon={item.icon}
-                title={item.title}
-                subTitle={item.subTitle}
-                showIconRight={item?.showIconRight}
-              />
-            );
-          }}
-          ItemSeparatorComponent={() => (
-            <Box height={scaledSize.moderateScale(16)} />
-          )}
-        />
-      </Section.Container>
-    );
-  }, []);
+  const _renderItem = useCallback(
+    (data: IMainMenu) => {
+      return (
+        <Section.Container title={data.sectionName}>
+          <FlatList
+            data={data.item}
+            keyExtractor={item => item.key}
+            renderItem={({ item }) => {
+              return (
+                <Section.Item
+                  key={item.key}
+                  icon={item.icon}
+                  title={item.title}
+                  subTitle={item.subTitle}
+                  showIconRight={item?.showIconRight}
+                  onPress={() => onPressItem(item.key)}
+                />
+              );
+            }}
+            ItemSeparatorComponent={() => (
+              <Box height={scaledSize.moderateScale(16)} />
+            )}
+          />
+        </Section.Container>
+      );
+    },
+    [onPressItem],
+  );
 
   return (
     <Container>
@@ -68,6 +84,29 @@ const ProfileScreen = () => {
           }
         />
       </Box>
+
+      <Drawer
+        title="Language"
+        visible={drawerLanguageVisible}
+        onClose={() => {
+          setdrawerLanguageVisible(false);
+        }}
+      >
+        <Box>
+          <Text>ground</Text>
+          <Text>ground</Text>
+          <Text>ground</Text>
+          <Text>ground</Text>
+          <Text>ground</Text>
+          <Text>ground</Text>
+          <Text>ground</Text>
+          <Text>ground</Text>
+          <Text>ground</Text>
+          <Text>ground</Text>
+          <Text>ground</Text>
+          <Text>ground</Text>
+        </Box>
+      </Drawer>
     </Container>
   );
 };

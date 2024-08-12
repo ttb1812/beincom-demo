@@ -1,8 +1,20 @@
-import { AppConfig, useAppTheme } from '../../common/utils';
+import { useCallback, useState } from 'react';
+import {
+  AppConfig,
+  NavigationService,
+  ScreenName,
+  useAppTheme,
+} from '../../common/utils';
 import { IMainMenu, MenuActionKeys } from './types';
 
 const useProfileScreen = () => {
   const theme = useAppTheme();
+  const [drawerLanguageVisible, setdrawerLanguageVisible] = useState(false);
+
+  const openLanguageDrawer = () => {
+    setdrawerLanguageVisible(true);
+  };
+
   const mainMenuConfig = [
     {
       sectionId: 1,
@@ -91,7 +103,29 @@ const useProfileScreen = () => {
       ],
     },
   ] as unknown as IMainMenu[];
-  return { mainMenuConfig };
+
+  const handlePressItem = useCallback((key: typeof MenuActionKeys | string) => {
+    switch (key) {
+      case MenuActionKeys.theme:
+        NavigationService.navigate(ScreenName.themeScreen);
+        break;
+      case MenuActionKeys.category:
+        NavigationService.navigate(ScreenName.manageCategoryScreen);
+        break;
+      case MenuActionKeys.language:
+        openLanguageDrawer();
+        break;
+
+      default:
+        break;
+    }
+  }, []);
+  return {
+    mainMenuConfig,
+    onPressItem: handlePressItem,
+    drawerLanguageVisible,
+    setdrawerLanguageVisible,
+  };
 };
 
 export default useProfileScreen;

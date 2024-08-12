@@ -14,3 +14,4 @@ export * from './footer';
 export * from './button';
 export * from './drawer';
 export * from './section';
+export * from './progress-bar';

@@ -9,6 +9,7 @@ import {
 } from '@shopify/react-native-skia';
 import React, { memo, useMemo } from 'react';
 import { ViewStyle } from 'react-native';
+import { scaledSize } from '../../utils';
 export interface SvgFromStringProps {
   svg: string;
   x?: number;
@@ -19,12 +20,13 @@ export interface SvgFromStringProps {
   scaling?: boolean;
 }
 const SvgFromString = (props: SvgFromStringProps) => {
+  const ICON_SIZE = scaledSize.moderateScale(24);
   const {
     svg,
     x = 0,
     y = 0,
-    width,
-    height,
+    width = ICON_SIZE,
+    height = ICON_SIZE,
     fitType = 'contain',
     scaling = true,
   } = props;

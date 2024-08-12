@@ -1,6 +1,6 @@
-import { TextStyle, ViewStyle } from 'react-native';
+import { TextProps, TextStyle, ViewStyle } from 'react-native';
 
-export interface ITextProps {
+export interface ITextProps extends TextProps {
   children: any;
   color?: string;
   fontSize?: number;

@@ -5,17 +5,25 @@ import React, {
   useCallback,
   useMemo,
 } from 'react';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Box } from '../box';
 import { IContainerProps } from './types';
 import { Image } from '../image';
 import { scaledSize, useAppTheme } from '../../utils';
 import _ from 'lodash';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Container = (props: IContainerProps) => {
   const { children, style, headerComponent, headerProps } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(), []);
+  const insets = useSafeAreaInsets();
+  const insetStyle = useMemo(
+    () => ({
+      paddingTop: Platform.OS === 'android' ? insets.top : 0,
+    }),
+    [insets.top],
+  );
 
   const _renderHeader = useCallback(() => {
     const isElementValid = isValidElement(headerComponent);
@@ -43,14 +51,14 @@ const Container = (props: IContainerProps) => {
 
   const _renderChildren = useCallback(() => {
     return (
-      <Box style={styles.overlay}>
+      <Box style={[styles.overlay, insetStyle]}>
         {_renderHeader()}
         <Box style={style} flex>
           {children}
         </Box>
       </Box>
     );
-  }, [_renderHeader, children, style, styles.overlay]);
+  }, [_renderHeader, children, insetStyle, style, styles.overlay]);
 
   return (
     <Box flex>

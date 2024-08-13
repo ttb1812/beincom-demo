@@ -34,7 +34,7 @@ const Drawer = (props: IDrawerProps) => {
     return (
       <Box style={styles.headerContainer}>
         <IconButton svg={theme.icons.cancle} onPress={handleClosePress} />
-        <Text variants="title2">{title}</Text>
+        <Text variants="title1">{title}</Text>
         <IconButton svg={theme.icons.check} onPress={handleClosePress} />
       </Box>
     );

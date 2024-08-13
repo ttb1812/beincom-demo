@@ -26,6 +26,9 @@ import { global } from './global';
 import { elementPlus } from './element-plus';
 import { brush } from './brush';
 import { more } from './more';
+import { search } from './search';
+import { searchBold } from './search-bold';
+import { cancelCircle } from './cancel-circle';
 export const icons = {
   home,
   calendar,
@@ -55,4 +58,7 @@ export const icons = {
   elementPlus,
   brush,
   more,
+  search,
+  searchBold,
+  cancelCircle,
 } as const;

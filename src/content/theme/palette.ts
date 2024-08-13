@@ -11,6 +11,7 @@ export const palette = {
   neutral4: '#CACACA',
   neutral5: '#E0E0E0',
   neutral6: '#FFFFFF',
+  neutral7: '#FBFBFB',
   semantic1: '#FF4267',
   semantic2: '#0890FE',
   semantic3: '#FFAF2A',

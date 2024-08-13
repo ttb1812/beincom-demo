@@ -15,3 +15,8 @@ export * from './button';
 export * from './drawer';
 export * from './section';
 export * from './progress-bar';
+export * from './calendar-carousel';
+export * from './filter-carousel';
+export * from './search-bar';
+export * from './calendar-widget';
+export * from './icon-category';

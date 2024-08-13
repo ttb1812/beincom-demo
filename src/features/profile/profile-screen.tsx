@@ -1,17 +1,10 @@
 import React, { memo, useCallback, useMemo } from 'react';
-import {
-  Box,
-  Container,
-  Section,
-  Button,
-  Drawer,
-  Text,
-} from '../../common/components';
+import { FlatList, Platform, StyleSheet } from 'react-native';
+import { Box, Button, Drawer, Section, Text } from '../../common/components';
+import { logger, scaledSize } from '../../common/utils';
 import { ProfileInformation } from './components';
-import { ITheme, logger, scaledSize, useAppTheme } from '../../common/utils';
-import useProfileScreen from './use-profile-screen';
-import { FlatList, StyleSheet } from 'react-native';
 import { IMainMenu } from './types';
+import useProfileScreen from './use-profile-screen';
 
 const ProfileScreen = () => {
   const {
@@ -20,8 +13,7 @@ const ProfileScreen = () => {
     drawerLanguageVisible,
     setdrawerLanguageVisible,
   } = useProfileScreen();
-  const theme = useAppTheme();
-  const styles = useMemo(() => makeStyles(theme), [theme]);
+  const styles = useMemo(() => makeStyles(), []);
 
   const _renderItem = useCallback(
     (data: IMainMenu) => {
@@ -53,7 +45,7 @@ const ProfileScreen = () => {
   );
 
   return (
-    <Container>
+    <>
       <Box padding={scaledSize.moderateScale(22)} flex>
         <FlatList
           data={mainMenuConfig}
@@ -71,6 +63,7 @@ const ProfileScreen = () => {
           ItemSeparatorComponent={() => (
             <Box height={scaledSize.moderateScale(24)} />
           )}
+          showsVerticalScrollIndicator={false}
           ListFooterComponent={
             <Box paddingTop={scaledSize.moderateScale(24)}>
               <Button
@@ -80,6 +73,7 @@ const ProfileScreen = () => {
                 }}
                 styleTxt={styles.signOutText}
               />
+              <Box style={styles.bottomSpace} />
             </Box>
           }
         />
@@ -107,16 +101,22 @@ const ProfileScreen = () => {
           <Text>ground</Text>
         </Box>
       </Drawer>
-    </Container>
+    </>
   );
 };
 
 export default memo(ProfileScreen);
 
-const makeStyles = (theme: ITheme) =>
+const makeStyles = () =>
   StyleSheet.create({
     signOutText: {
       fontWeight: '400',
       fontSize: scaledSize.moderateScale(20),
+    },
+    bottomSpace: {
+      height: Platform.select({
+        ios: scaledSize.moderateScale(100),
+        android: scaledSize.moderateScale(92),
+      }),
     },
   });

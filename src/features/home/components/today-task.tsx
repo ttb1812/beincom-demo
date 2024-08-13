@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import { Box, IconButton, Text } from '../../../common/components';
+import { Box, Text } from '../../../common/components';
 import {
   ITheme,
   NavigationService,
@@ -52,11 +52,8 @@ const TodayTask = () => {
         </Box>
         <Box>{_renderViewTaskBtn()}</Box>
       </Box>
-      <Box flex={6} row justifyContent="space-between">
+      <Box flex={6} justifyContent="space-between">
         {_renderPieChart()}
-        <Box style={styles.optionBtn}>
-          <IconButton svg={theme.icons.more} />
-        </Box>
       </Box>
     </Box>
   );

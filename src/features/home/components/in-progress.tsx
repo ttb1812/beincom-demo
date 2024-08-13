@@ -1,11 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import {
-  Box,
-  ProgressBar,
-  SvgFromString,
-  Text,
-} from '../../../common/components';
+import { Box, ProgressBar, Text } from '../../../common/components';
 import { ITheme, scaledSize, useAppTheme } from '../../../common/utils';
 
 const MOCK_DATA = new Array(6);
@@ -36,11 +31,8 @@ const InProgress = () => {
   const _renderProgressItem = useCallback(() => {
     return (
       <Box style={styles.progressItemContainer}>
-        <Box rowAlignCenter justifyContent="space-between">
+        <Box justifyContent="space-between">
           <Text variants="title3">Office Project</Text>
-          <Box>
-            <SvgFromString svg={theme.icons.more} />
-          </Box>
         </Box>
         <Box>
           <Text variants="title2" numberOfLines={2}>
@@ -50,7 +42,7 @@ const InProgress = () => {
         <ProgressBar current={50} goal={100} />
       </Box>
     );
-  }, [styles.progressItemContainer, theme.icons.more]);
+  }, [styles.progressItemContainer]);
 
   return (
     <Box paddingTop={scaledSize.moderateScale(28)}>

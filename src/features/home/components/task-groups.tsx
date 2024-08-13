@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
-import { Box, Text } from '../../../common/components';
+import { FlatList, StyleSheet, Pressable } from 'react-native';
+import { Box, IconCategory, Text } from '../../../common/components';
 import { ITheme, scaledSize, useAppTheme } from '../../../common/utils';
 
 const MOCK_DATA = new Array(6);
@@ -30,11 +30,37 @@ const TaskGroups = () => {
 
   const _renderGroupItem = useCallback(() => {
     return (
-      <Box style={styles.groupItemContainer}>
-        <Text>sdkfsjdh</Text>
-      </Box>
+      <Pressable>
+        <Box style={styles.groupItemContainer}>
+          <Box rowAlignCenter>
+            <IconCategory
+              icon={theme.icons.calendar}
+              backgroundColor={theme.palette.neutral5}
+            />
+            <Box marginLeft={scaledSize.moderateScale(16)}>
+              <Text variants="body1">Office Project</Text>
+              <Text variants="body3" color={theme.palette.neutral2}>
+                23 tasks
+              </Text>
+            </Box>
+          </Box>
+          <Box>
+            <Box
+              width={52}
+              height={52}
+              backgroundColor={'green'}
+              radius="full"
+            />
+          </Box>
+        </Box>
+      </Pressable>
     );
-  }, [styles.groupItemContainer]);
+  }, [
+    styles.groupItemContainer,
+    theme.icons.calendar,
+    theme.palette.neutral2,
+    theme.palette.neutral5,
+  ]);
 
   return (
     <Box paddingTop={scaledSize.moderateScale(28)}>
@@ -79,9 +105,11 @@ const makeStyles = (theme: ITheme) =>
       paddingHorizontal: scaledSize.moderateScale(22),
     },
     groupItemContainer: {
-      height: scaledSize.verticalScale(63),
-      backgroundColor: 'green',
-      borderRadius: scaledSize.moderateScale(16),
+      borderRadius: scaledSize.moderateScale(24),
       padding: scaledSize.moderateScale(22),
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      backgroundColor: theme.palette.neutral6,
     },
   });

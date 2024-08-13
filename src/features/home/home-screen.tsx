@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   bottomSpace: {
     height: Platform.select({
-      android: scaledSize.verticalScale(88),
+      android: scaledSize.verticalScale(48),
       ios: scaledSize.verticalScale(100),
     }),
   },

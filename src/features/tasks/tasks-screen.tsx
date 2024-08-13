@@ -1,11 +1,11 @@
+import { Box } from 'native-base';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import {
   Container,
-  Content,
   Header,
   IconButton,
-  Text,
+  SearchBar,
 } from '../../common/components';
 import { NavigationService, ScreenName, useAppTheme } from '../../common/utils';
 
@@ -28,9 +28,9 @@ const TasksScreen = () => {
         ),
       }}
     >
-      <Content contentContainerStyle={styles.content}>
-        <Text>TasksScreen</Text>
-      </Content>
+      <Box>
+        <SearchBar />
+      </Box>
     </Container>
   );
 };
@@ -38,10 +38,7 @@ const TasksScreen = () => {
 export default memo(TasksScreen);
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  container: {},
   content: {
     justifyContent: 'center',
     alignItems: 'center',

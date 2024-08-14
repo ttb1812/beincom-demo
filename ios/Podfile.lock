@@ -928,6 +928,8 @@ PODS:
     - React-Core
   - react-native-date-picker (5.0.4):
     - React-Core
+  - react-native-get-random-values (1.11.0):
+    - React-Core
   - react-native-mmkv (2.12.2):
     - DoubleConversion
     - glog
@@ -1281,6 +1283,7 @@ DEPENDENCIES:
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - react-native-config (from `../node_modules/react-native-config`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
+  - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-mmkv (from `../node_modules/react-native-mmkv`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-skia (from `../node_modules/@shopify/react-native-skia`)"
@@ -1385,6 +1388,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-config"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
+  react-native-get-random-values:
+    :path: "../node_modules/react-native-get-random-values"
   react-native-mmkv:
     :path: "../node_modules/react-native-mmkv"
   react-native-safe-area-context:
@@ -1483,6 +1488,7 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 6c1cacdbf40b531f549eba249e531a7d0bfd8e7f
   react-native-config: 8f7283449bbb048902f4e764affbbf24504454af
   react-native-date-picker: 6891317e850deae5b53d51355226e07a495aba61
+  react-native-get-random-values: 21325b2244dfa6b58878f51f9aa42821e7ba3d06
   react-native-mmkv: 5ce966e593ccb67b6e612498ee933fa284973ed9
   react-native-safe-area-context: b7daa1a8df36095a032dff095a1ea8963cb48371
   react-native-skia: 15cfb10d568c6618369396c9ff4dc6aac5769061

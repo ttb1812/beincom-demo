@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { CalendarAction } from '../calendar/start-up-slice';
+import { CalendarAction } from '../calendar/calendar-slice';
 
 const useStartUp = () => {
   const isMounted = useRef(false);

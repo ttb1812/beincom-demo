@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { ITheme, scaledSize, ternaryOperator, useAppTheme } from '../../utils';
 import { Box } from '../box';
 import { Text } from '../text';
-import { getCalendarCarousel } from '../../../features/calendar/start-up-slice';
+import { getCalendarCarousel } from '../../../features/calendar/calendar-slice';
 
 interface ICalendarCarouselProp {
   selectedDate: string;

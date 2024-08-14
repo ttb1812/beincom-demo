@@ -127,16 +127,12 @@ const useProfileScreen = () => {
   const handlePressItem = useCallback(
     (key: typeof MenuActionKeys | string) => {
       switch (key) {
-        case MenuActionKeys.theme:
-          NavigationService.navigate(ScreenName.themeScreen);
-          break;
         case MenuActionKeys.category:
           NavigationService.navigate(ScreenName.manageCategoryScreen);
           break;
         case MenuActionKeys.language:
           openLanguageDrawer();
           break;
-
         default:
           featureDevelop();
           break;

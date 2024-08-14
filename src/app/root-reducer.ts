@@ -9,17 +9,23 @@ import {
 import {
   calendarReducerName,
   calendarReducer,
-} from '../features/calendar/start-up-slice';
+} from '../features/calendar/calendar-slice';
+import {
+  categoriesReducerName,
+  categoriesReducer,
+} from '../features/manage-category/manage-category-slice';
 
 const rootReducer = combineReducers({
   // [reducername]: reducer
   [startUpReducerName]: startUpReducer,
   [calendarReducerName]: calendarReducer,
+  [categoriesReducerName]: categoriesReducer,
 });
 
 const whitelist: string[] = [
   // reducerName
   startUpReducerName,
+  categoriesReducerName,
 ];
 const compressor = createCompressor({ whitelist });
 const config: PersistConfig<any> = {

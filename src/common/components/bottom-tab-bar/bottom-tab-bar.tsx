@@ -11,9 +11,11 @@ import {
 import { Box } from '../box';
 import { Image } from '../image';
 import CustomTabButton from './custom-tab-button';
+import { useKeyboard } from '../../hooks';
 
 const BottomTabBar = (props: BottomTabBarProps) => {
   const { state, descriptors, navigation } = props;
+  const { keyboardVisible } = useKeyboard();
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(), []);
 

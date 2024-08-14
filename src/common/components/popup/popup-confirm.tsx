@@ -14,6 +14,7 @@ import { Box } from '../box';
 import { Text } from '../text';
 import { NSPopup } from './types';
 import color from 'color';
+
 function createReactNodeHOC<P = any>(
   WrappedComponent: any,
   props: PropsWithChildren<P>,

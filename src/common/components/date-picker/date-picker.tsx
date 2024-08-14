@@ -8,15 +8,19 @@ import RNDatePicker from 'react-native-date-picker';
 
 interface IDatePickerProps {
   title?: string;
+  onDateChange?: (date: Date) => void;
 }
 
 const DatePicker = (props: IDatePickerProps) => {
-  const { title } = props;
+  const { title, onDateChange } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
   const ICON_SIZE = scaledSize.moderateScale(24);
-  const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+
+  const onDateTimeChange = (date: Date) => {
+    onDateChange?.(date);
+  };
 
   return (
     <>
@@ -45,11 +49,8 @@ const DatePicker = (props: IDatePickerProps) => {
         modal
         mode="datetime"
         open={open}
-        date={date}
-        onConfirm={date => {
-          setOpen(false);
-          setDate(date);
-        }}
+        date={new Date()}
+        onConfirm={onDateTimeChange}
         onCancel={() => {
           setOpen(false);
         }}

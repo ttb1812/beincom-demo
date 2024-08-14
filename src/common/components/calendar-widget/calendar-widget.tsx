@@ -5,7 +5,7 @@ import { ITheme, scaledSize, useAppTheme } from '../../utils';
 import { Box } from '../box';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { CalendarAction } from '../../../features/calendar/start-up-slice';
+import { CalendarAction } from '../../../features/calendar/calendar-slice';
 interface ICalendarWidgetProps {
   selectedDate: string;
   setSelectedDate: (date: string) => void;

@@ -11,6 +11,7 @@ import DrawerHeader from './drawer-header';
 import DrawerItem from './drawer-item';
 
 export interface IItemList {
+  id?: string;
   title: string;
   subTitle?: string;
   isSelected?: boolean;

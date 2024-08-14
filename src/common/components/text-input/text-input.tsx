@@ -1,16 +1,20 @@
-import { StyleSheet, TextInput as RNTextInput } from 'react-native';
+import {
+  StyleSheet,
+  TextInput as RNTextInput,
+  TextInputProps,
+} from 'react-native';
 import React, { memo, useMemo } from 'react';
 import { Box } from '../box';
 import { Text } from '../text';
 import { ITheme, scaledSize, useAppTheme } from '../../utils';
 
-interface ITextInputProps {
+interface ITextInputProps extends TextInputProps {
   title?: string;
   multiline?: boolean;
 }
 
 const TextInput = (props: ITextInputProps) => {
-  const { title, multiline } = props;
+  const { title, multiline, value, onChangeText } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
   return (
@@ -23,6 +27,8 @@ const TextInput = (props: ITextInputProps) => {
 
       <RNTextInput
         placeholder="Do something..."
+        value={value}
+        onChangeText={onChangeText}
         style={[theme.styles.body3, styles.textInput]}
         multiline={multiline}
       />

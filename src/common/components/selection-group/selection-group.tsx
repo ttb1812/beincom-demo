@@ -1,30 +1,25 @@
-import React, { memo, useMemo, useState } from 'react';
-import { StyleSheet, Pressable } from 'react-native';
+import React, { memo, useMemo } from 'react';
+import { Pressable, StyleSheet } from 'react-native';
 import { ITheme, scaledSize, useAppTheme } from '../../utils';
 import { Box } from '../box';
 import { SvgFromString } from '../svg-from-string';
 import { Text } from '../text';
-import { Drawer } from '../drawer';
 
-const SelectionGroup = () => {
+interface ISelectionGroupProps {
+  title?: string;
+  onPress?: () => void;
+  subTitle?: string;
+}
+
+const SelectionGroup = (props: ISelectionGroupProps) => {
+  const { title, onPress, subTitle } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
   const ICON_SIZE = scaledSize.moderateScale(24);
 
-  const LANGUAGE = [
-    { title: 'English', isSselected: true },
-    { title: 'Tiếng Việt', isSelected: false },
-  ];
-  const [test, setTest] = useState(LANGUAGE[0]);
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const onOpen = () => {
-    setModalVisible(true);
-  };
-
   return (
     <>
-      <Pressable style={styles.container} onPress={onOpen}>
+      <Pressable style={styles.container} onPress={onPress}>
         <Box rowAlignCenter>
           <SvgFromString
             svg={theme.icons.calendarPicker}
@@ -33,9 +28,9 @@ const SelectionGroup = () => {
           />
           <Box marginLeft={scaledSize.moderateScale(12)}>
             <Text variants="caption2" style={styles.title}>
-              Task Categories
+              {title}
             </Text>
-            <Text variants="body1">Work</Text>
+            <Text variants="body1">{subTitle}</Text>
           </Box>
         </Box>
 
@@ -45,17 +40,6 @@ const SelectionGroup = () => {
           height={ICON_SIZE}
         />
       </Pressable>
-
-      <Drawer.SingleDrawer
-        title="Categories"
-        data={LANGUAGE}
-        visible={modalVisible}
-        itemSelected={test}
-        onSelect={item => setTest(item as any)}
-        onClose={() => {
-          setModalVisible(false);
-        }}
-      />
     </>
   );
 };

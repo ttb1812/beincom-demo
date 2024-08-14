@@ -20,3 +20,5 @@ export * from './filter-carousel';
 export * from './search-bar';
 export * from './calendar-widget';
 export * from './icon-category';
+export * from './pie-chart';
+export * from './check-box';

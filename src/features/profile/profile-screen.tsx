@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { FlatList, Platform, StyleSheet } from 'react-native';
-import { Box, Button, Drawer, Section, Text } from '../../common/components';
+import { Box, Button, Drawer, Section } from '../../common/components';
 import { logger, scaledSize } from '../../common/utils';
 import { ProfileInformation } from './components';
 import { IMainMenu } from './types';
@@ -11,7 +11,7 @@ const ProfileScreen = () => {
     mainMenuConfig,
     onPressItem,
     drawerLanguageVisible,
-    setdrawerLanguageVisible,
+    setDrawerLanguageVisible,
   } = useProfileScreen();
   const styles = useMemo(() => makeStyles(), []);
 
@@ -78,29 +78,13 @@ const ProfileScreen = () => {
           }
         />
       </Box>
-
-      <Drawer
+      <Drawer.SingleDrawer
         title="Language"
         visible={drawerLanguageVisible}
         onClose={() => {
-          setdrawerLanguageVisible(false);
+          setDrawerLanguageVisible(false);
         }}
-      >
-        <Box>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-        </Box>
-      </Drawer>
+      />
     </>
   );
 };

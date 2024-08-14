@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import {
   Animated,
   FlatList,
@@ -28,7 +28,6 @@ const CalendarScreen = () => {
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(), []);
   const [headerHeight] = useState(new Animated.Value(1));
-  const lastScrollY = useRef(0);
   const CALENDAR_HEIGHT = Platform.select({
     ios: scaledSize.verticalScale(360),
     android: scaledSize.verticalScale(400),
@@ -42,7 +41,7 @@ const CalendarScreen = () => {
       layoutMeasurement.height + scrollY + 2 >= contentSize.height;
 
     // scrolling down
-    if (scrollY > 0) {
+    if (scrollY > scaledSize.verticalScale(60)) {
       Animated.timing(headerHeight, {
         toValue: 0,
         duration: 100,
@@ -58,13 +57,11 @@ const CalendarScreen = () => {
         }).start();
       }
     }
-
-    lastScrollY.current = scrollY;
   };
 
   const headerHeightInterpolate = headerHeight.interpolate({
     inputRange: [0, 1],
-    outputRange: [CALENDAR_CAROUSEL_HEIGHT, CALENDAR_HEIGHT],
+    outputRange: [CALENDAR_CAROUSEL_HEIGHT, Number(CALENDAR_HEIGHT)],
   });
 
   const calendarCarouselOpacityInterpolate = headerHeight.interpolate({
@@ -148,7 +145,7 @@ const CalendarScreen = () => {
             )}
             ListFooterComponent={_renderBottomSpace}
             onScroll={handleScroll}
-            scrollEventThrottle={16}
+            scrollEventThrottle={28}
             showsVerticalScrollIndicator={false}
           />
         </Box>
@@ -171,7 +168,7 @@ const makeStyles = () =>
     },
     bottomSpace: {
       height: Platform.select({
-        android: scaledSize.verticalScale(88),
+        android: scaledSize.verticalScale(630),
         ios: scaledSize.verticalScale(660),
       }),
     },

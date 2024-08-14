@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import { Box, Text } from '../../../common/components';
+import { Box, Text, PieChart } from '../../../common/components';
 import {
   ITheme,
   NavigationService,
@@ -29,18 +29,16 @@ const TodayTask = () => {
   const _renderPieChart = useCallback(() => {
     return (
       <Box flex center>
-        <Box
-          radius="full"
-          backgroundColor="green"
-          width={100}
-          height={100}
-          center
-        >
-          <Text>Pie</Text>
+        <Box>
+          <PieChart
+            radius={scaledSize.scale(50)}
+            innerRadius={scaledSize.scale(38)}
+            innerCircleColor={theme.palette.primary1}
+          />
         </Box>
       </Box>
     );
-  }, []);
+  }, [theme.palette.primary1]);
 
   return (
     <Box style={styles.container}>

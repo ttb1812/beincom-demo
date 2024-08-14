@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { FlatList, StyleSheet, Pressable } from 'react-native';
-import { Box, IconCategory, Text } from '../../../common/components';
+import { Box, IconCategory, PieChart, Text } from '../../../common/components';
 import { ITheme, scaledSize, useAppTheme } from '../../../common/utils';
 
 const MOCK_DATA = new Array(6);
@@ -45,11 +45,10 @@ const TaskGroups = () => {
             </Box>
           </Box>
           <Box>
-            <Box
-              width={52}
-              height={52}
-              backgroundColor={'green'}
-              radius="full"
+            <PieChart
+              radius={scaledSize.scale(26)}
+              innerRadius={scaledSize.scale(20)}
+              innerCircleColor={theme.palette.neutral6}
             />
           </Box>
         </Box>
@@ -60,6 +59,7 @@ const TaskGroups = () => {
     theme.icons.calendar,
     theme.palette.neutral2,
     theme.palette.neutral5,
+    theme.palette.neutral6,
   ]);
 
   return (

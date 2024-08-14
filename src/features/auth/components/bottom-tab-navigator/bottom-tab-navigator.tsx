@@ -67,6 +67,7 @@ const BottomTabNavigator = () => {
       initialRouteName={ScreenName.homeScreen}
       screenOptions={{
         headerShown: false,
+        tabBarHideOnKeyboard: true,
       }}
       tabBar={props => {
         return <BottomTabBar {...props} />;

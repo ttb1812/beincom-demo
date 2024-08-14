@@ -11,7 +11,7 @@ import { notificationBold } from './notification-bold';
 import { arrowLeft } from './arrow-left';
 import { arrowDown } from './arrow-down';
 import { calendarPicker } from './calendar-picker';
-import { cancle } from './cancle';
+import { cancel } from './cancel';
 import { check } from './check';
 import { arrowRightBold } from './arrow-right-bold';
 import { clock } from './clock';
@@ -43,7 +43,7 @@ export const icons = {
   arrowLeft,
   arrowDown,
   calendarPicker,
-  cancle,
+  cancel,
   check,
   arrowRightBold,
   clock,

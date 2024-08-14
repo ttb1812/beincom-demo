@@ -9,10 +9,10 @@ import { IMainMenu, MenuActionKeys } from './types';
 
 const useProfileScreen = () => {
   const theme = useAppTheme();
-  const [drawerLanguageVisible, setdrawerLanguageVisible] = useState(false);
+  const [drawerLanguageVisible, setDrawerLanguageVisible] = useState(false);
 
   const openLanguageDrawer = () => {
-    setdrawerLanguageVisible(true);
+    setDrawerLanguageVisible(true);
   };
 
   const mainMenuConfig = [
@@ -124,7 +124,7 @@ const useProfileScreen = () => {
     mainMenuConfig,
     onPressItem: handlePressItem,
     drawerLanguageVisible,
-    setdrawerLanguageVisible,
+    setDrawerLanguageVisible,
   };
 };
 

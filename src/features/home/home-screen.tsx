@@ -1,11 +1,12 @@
 import React, { memo, useCallback } from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
+  Box,
   Container,
   Content,
   Header,
   IconButton,
-  Box,
+  PieChart,
 } from '../../common/components';
 import {
   NavigationService,
@@ -59,9 +60,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
   },
   bottomSpace: {
-    height: Platform.select({
-      android: scaledSize.verticalScale(48),
-      ios: scaledSize.verticalScale(100),
-    }),
+    height: scaledSize.verticalScale(100),
   },
 });

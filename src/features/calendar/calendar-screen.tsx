@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import {
   Animated,
-  FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
   Platform,
@@ -16,18 +15,26 @@ import {
   Header,
   IconButton,
 } from '../../common/components';
-import {
-  NavigationService,
-  scaledSize,
-  ScreenName,
-  useAppTheme,
-} from '../../common/utils';
+import { scaledSize, useAppTheme } from '../../common/utils';
 import { TaskItem } from './components';
+import useCalendarScreen from './use-calendar-screen';
 
 const CalendarScreen = () => {
+  const {
+    selectedDate,
+    setSelectedDate,
+    monthSelected,
+    setMonthSelected,
+    tasks,
+    filterOption,
+    handleFilterOption,
+    filters,
+    featureDevelop,
+  } = useCalendarScreen();
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(), []);
   const [headerHeight] = useState(new Animated.Value(1));
+
   const CALENDAR_HEIGHT = Platform.select({
     ios: scaledSize.verticalScale(360),
     android: scaledSize.verticalScale(400),
@@ -41,7 +48,7 @@ const CalendarScreen = () => {
       layoutMeasurement.height + scrollY + 2 >= contentSize.height;
 
     // scrolling down
-    if (scrollY > scaledSize.verticalScale(60)) {
+    if (scrollY > scaledSize.verticalScale(128)) {
       Animated.timing(headerHeight, {
         toValue: 0,
         duration: 100,
@@ -92,9 +99,7 @@ const CalendarScreen = () => {
           rightButtonComponent={
             <IconButton
               svg={theme.icons.notificationBold}
-              onPress={() => {
-                NavigationService.navigate(ScreenName.notificationsScreen);
-              }}
+              onPress={featureDevelop}
             />
           }
         />
@@ -117,7 +122,13 @@ const CalendarScreen = () => {
               },
             ]}
           >
-            <CalendarCarousel />
+            <CalendarCarousel
+              selectedDate={selectedDate}
+              setSelectedDate={date => {
+                setSelectedDate(date);
+                setMonthSelected(date);
+              }}
+            />
           </Animated.View>
 
           <Animated.View
@@ -125,27 +136,36 @@ const CalendarScreen = () => {
               opacity: calendarWidgetOpacityInterpolate,
             }}
           >
-            <CalendarWidget />
+            <CalendarWidget
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+              monthSelected={monthSelected}
+              setMonthSelected={setMonthSelected}
+            />
           </Animated.View>
         </Animated.View>
 
         <Box paddingVertical={scaledSize.moderateScale(28)}>
-          <FilterCarousel />
+          <FilterCarousel
+            filterOption={filterOption}
+            setFilterOption={handleFilterOption}
+            filters={filters}
+          />
         </Box>
 
         <Box paddingHorizontal={scaledSize.moderateScale(22)}>
-          <FlatList
-            data={new Array(40)}
+          <Animated.FlatList
+            data={tasks}
             keyExtractor={(item, index) => index.toString()}
             renderItem={() => {
-              return <TaskItem />;
+              return <TaskItem onPress={featureDevelop} />;
             }}
             ItemSeparatorComponent={() => (
               <Box height={scaledSize.moderateScale(16)} />
             )}
             ListFooterComponent={_renderBottomSpace}
             onScroll={handleScroll}
-            scrollEventThrottle={28}
+            scrollEventThrottle={20}
             showsVerticalScrollIndicator={false}
           />
         </Box>

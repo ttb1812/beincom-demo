@@ -5,6 +5,8 @@ import { navigationRef, withTheme } from '../../../common/utils';
 import { AuthGuard } from '../../auth';
 import { Platform, StatusBar } from 'react-native';
 import { PortalProvider } from '@gorhom/portal';
+import useStartUp from '../use-start-up';
+import { GlobalPopupID, PopupProvider } from '../../../common/components';
 
 const ApplicationNavigator = memo(() => {
   return (
@@ -18,6 +20,7 @@ const AppStartup = () => {
   const theme = extendTheme({
     ...withTheme('light'),
   });
+  useStartUp();
   useEffect(() => {
     if (Platform.OS === 'android') {
       StatusBar.setTranslucent(true);
@@ -29,6 +32,7 @@ const AppStartup = () => {
     <NativeBaseProvider theme={theme}>
       <PortalProvider>
         <ApplicationNavigator />
+        <PopupProvider popupId={GlobalPopupID} />
       </PortalProvider>
     </NativeBaseProvider>
   );

@@ -6,3 +6,4 @@ export * from './constants';
 export * from './ternary-operation';
 export * from './app-navigator';
 export * from './theme';
+export * from './storage';

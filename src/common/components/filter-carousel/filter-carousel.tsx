@@ -1,25 +1,33 @@
+import React, { memo, useMemo } from 'react';
 import { FlatList, Pressable, StyleSheet } from 'react-native';
-import React, { memo, useMemo, useState } from 'react';
 import { ITheme, scaledSize, ternaryOperator, useAppTheme } from '../../utils';
 import { Box } from '../box';
 import { Text } from '../text';
 
-const DATA = [
-  { id: '1', title: 'All', key: 'all' },
-  { id: '2', title: 'To do', key: 'toDo' },
-  { id: '3', title: 'Completed', key: 'completed' },
-];
+export interface IFilterItem {
+  id: string;
+  title: string;
+  key: string;
+}
 
-const FilterCarousel = () => {
-  const [filters] = useState<any[]>(DATA);
-  const [selectedItem, setSelectedItem] = useState(DATA[0]);
+interface IFilterCarouselProps<T> {
+  filterOption?: T;
+  setFilterOption?: (value: T) => void;
+  filters?: T[];
+}
+const FilterCarousel = (props: IFilterCarouselProps<IFilterItem>) => {
+  const { filterOption, setFilterOption, filters } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
 
   const _renderDateItem = ({ item }: any) => {
-    const isSelected = item === selectedItem;
+    const isSelected = item === filterOption;
     return (
-      <Pressable onPress={() => setSelectedItem(item)}>
+      <Pressable
+        onPress={() => {
+          setFilterOption?.(item);
+        }}
+      >
         <Box style={[styles.dateItem, isSelected && styles.selectedDateItem]}>
           <Text
             style={ternaryOperator(
@@ -37,7 +45,7 @@ const FilterCarousel = () => {
   };
 
   return (
-    <Box style={styles.container}>
+    <Box>
       <FlatList
         horizontal
         data={filters}
@@ -45,7 +53,9 @@ const FilterCarousel = () => {
         keyExtractor={item => item?.id}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.contentContainerStyle}
-        ItemSeparatorComponent={() => <Box width="4" />}
+        ItemSeparatorComponent={() => (
+          <Box width={scaledSize.moderateScale(16)} />
+        )}
       />
     </Box>
   );
@@ -55,9 +65,6 @@ export default memo(FilterCarousel);
 
 const makeStyles = (theme: ITheme) =>
   StyleSheet.create({
-    container: {
-      // marginTop: scaledSize.moderateScale(28),
-    },
     contentContainerStyle: {
       paddingHorizontal: scaledSize.moderateScale(22),
     },

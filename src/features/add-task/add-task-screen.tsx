@@ -29,7 +29,7 @@ const AddTaskScreen = () => {
           <TextInput title="Task Name" />
         </Box>
         <Box paddingTop={PADDING_TOP}>
-          <TextInput title="Description" multiline numberOfLines={10} />
+          <TextInput title="Description" multiline />
         </Box>
         <Box paddingTop={PADDING_TOP}>
           <DatePicker title="Start Date" />

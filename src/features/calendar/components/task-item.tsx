@@ -7,8 +7,12 @@ import {
   Text,
 } from '../../../common/components';
 import { ITheme, scaledSize, useAppTheme } from '../../../common/utils';
+interface ITaskItemProps {
+  onPress?: () => void;
+}
 
-const TaskItem = () => {
+const TaskItem = (props: ITaskItemProps) => {
+  const { onPress } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
 
@@ -23,7 +27,7 @@ const TaskItem = () => {
   }, [styles.statusLabel, theme.palette.primary1]);
 
   return (
-    <Pressable>
+    <Pressable onPress={onPress}>
       <Box style={styles.container}>
         <Box style={styles.leftContent}>
           <Text

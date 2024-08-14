@@ -28,7 +28,7 @@ const SearchBar = () => {
   const onFocus = useCallback(() => {
     Animated.timing(searchWidth, {
       toValue: 0,
-      duration: 300,
+      duration: 150,
       useNativeDriver: false,
     }).start();
     setFocused(true);
@@ -38,7 +38,7 @@ const SearchBar = () => {
   const onBlur = useCallback(() => {
     Animated.timing(searchWidth, {
       toValue: 1,
-      duration: 300,
+      duration: 150,
       useNativeDriver: false,
     }).start();
     setFocused(false);

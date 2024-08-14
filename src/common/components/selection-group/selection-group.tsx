@@ -1,4 +1,4 @@
-import React, { memo, useMemo, useRef, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import { ITheme, scaledSize, useAppTheme } from '../../utils';
 import { Box } from '../box';
@@ -10,6 +10,12 @@ const SelectionGroup = () => {
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
   const ICON_SIZE = scaledSize.moderateScale(24);
+
+  const LANGUAGE = [
+    { title: 'English', isSselected: true },
+    { title: 'Tiếng Việt', isSelected: false },
+  ];
+  const [test, setTest] = useState(LANGUAGE[0]);
   const [modalVisible, setModalVisible] = useState(false);
 
   const onOpen = () => {
@@ -27,7 +33,7 @@ const SelectionGroup = () => {
           />
           <Box marginLeft={scaledSize.moderateScale(12)}>
             <Text variants="caption2" style={styles.title}>
-              Task Group
+              Task Categories
             </Text>
             <Text variants="body1">Work</Text>
           </Box>
@@ -40,28 +46,16 @@ const SelectionGroup = () => {
         />
       </Pressable>
 
-      <Drawer
-        title="Groups"
+      <Drawer.SingleDrawer
+        title="Categories"
+        data={LANGUAGE}
         visible={modalVisible}
+        itemSelected={test}
+        onSelect={item => setTest(item as any)}
         onClose={() => {
           setModalVisible(false);
         }}
-      >
-        <Box>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-          <Text>ground</Text>
-        </Box>
-      </Drawer>
+      />
     </>
   );
 };

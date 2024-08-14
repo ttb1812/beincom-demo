@@ -6,12 +6,11 @@ import { ITheme, scaledSize, useAppTheme } from '../../utils';
 
 interface ITextInputProps {
   title?: string;
-  numberOfLines?: number;
   multiline?: boolean;
 }
 
 const TextInput = (props: ITextInputProps) => {
-  const { title, numberOfLines = 1, multiline = false } = props;
+  const { title, multiline } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
   return (
@@ -24,9 +23,7 @@ const TextInput = (props: ITextInputProps) => {
 
       <RNTextInput
         placeholder="Do something..."
-        value="This application is designed for super shops. By using this application they can enlist all their products in one place and can deliver. Customers will get a one-stop solution for their daily shopping."
         style={[theme.styles.body3, styles.textInput]}
-        numberOfLines={numberOfLines}
         multiline={multiline}
       />
     </Box>
@@ -48,5 +45,7 @@ const makeStyles = (theme: ITheme) =>
     },
     textInput: {
       fontWeight: '400',
+      paddingTop: scaledSize.moderateScale(8),
+      paddingBottom: 0,
     },
   });

@@ -9,7 +9,7 @@ import { Platform, StyleSheet } from 'react-native';
 import { Box } from '../box';
 import { IContainerProps } from './types';
 import { Image } from '../image';
-import { scaledSize, useAppTheme } from '../../utils';
+import { scaledSize, ternaryOperator, useAppTheme } from '../../utils';
 import _ from 'lodash';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -20,7 +20,12 @@ const Container = (props: IContainerProps) => {
   const insets = useSafeAreaInsets();
   const insetStyle = useMemo(
     () => ({
-      paddingTop: Platform.OS === 'android' ? insets.top : 0,
+      paddingTop: ternaryOperator(Platform.OS === 'android', insets.top, 0),
+      height: ternaryOperator(
+        Platform.OS === 'android',
+        insets.top + scaledSize.deviceHeight,
+        scaledSize.deviceHeight,
+      ),
     }),
     [insets.top],
   );

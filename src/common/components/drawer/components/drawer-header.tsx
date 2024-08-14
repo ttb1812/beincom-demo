@@ -7,28 +7,23 @@ import { scaledSize, useAppTheme } from '../../../utils';
 
 interface IDrawerHeaderProps {
   onClose?: () => void;
-  onDone?: () => void;
   title?: string;
 }
 
 const DrawerHeader = (props: IDrawerHeaderProps) => {
-  const { onClose, onDone, title } = props;
+  const { onClose, title } = props;
+  const ICON_SIZE = scaledSize.moderateScale(16);
   const theme = useAppTheme();
   return (
     <Box style={styles.headerContainer}>
       <IconButton
-        width={16}
-        height={16}
+        width={ICON_SIZE}
+        height={ICON_SIZE}
         svg={theme.icons.cancel}
         onPress={onClose}
       />
       <Text variants="title2">{title}</Text>
-      <IconButton
-        width={16}
-        height={16}
-        svg={theme.icons.check}
-        onPress={onDone}
-      />
+      <Box width={scaledSize.moderateScale(48)} />
     </Box>
   );
 };
@@ -39,8 +34,8 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    height: scaledSize.verticalScale(52),
     paddingHorizontal: scaledSize.moderateScale(12),
-    paddingVertical: scaledSize.moderateScale(6),
     justifyContent: 'space-between',
   },
 });

@@ -89,6 +89,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode Integer.valueOf(project.env.get("ANDROID_APP_VERSION_CODE"))
         versionName project.env.get("ANDROID_APP_VERSION_NAME")
+        resValue "string", "build_config_package", "com.beincomdemo"
     }
     signingConfigs {
         debug {

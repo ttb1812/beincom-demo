@@ -6,18 +6,22 @@ import {
   Content,
   Header,
   IconButton,
-  PieChart,
+  PopupManager,
 } from '../../common/components';
-import {
-  NavigationService,
-  scaledSize,
-  ScreenName,
-  useAppTheme,
-} from '../../common/utils';
+import { scaledSize, useAppTheme } from '../../common/utils';
 import { InProgress, TaskGroups, TodayTask } from './components';
 
 const HomeScreen = () => {
   const theme = useAppTheme();
+  const featureDevelop = () => {
+    PopupManager.instance?.show({
+      title: 'Feature development!',
+      message: '',
+      confirmButton: {
+        text: 'Ok',
+      },
+    });
+  };
   const _renderBottomSpace = useCallback(() => {
     return <Box style={styles.bottomSpace} />;
   }, []);
@@ -31,17 +35,15 @@ const HomeScreen = () => {
         rightButtonComponent: (
           <IconButton
             svg={theme.icons.notificationBold}
-            onPress={() => {
-              NavigationService.navigate(ScreenName.notificationsScreen);
-            }}
+            onPress={featureDevelop}
           />
         ),
       }}
     >
       <Content contentContainerStyle={styles.content} scrollEnabled>
         <TodayTask />
-        <InProgress />
-        <TaskGroups />
+        <InProgress onPressProgressItem={featureDevelop} />
+        <TaskGroups onPressGroupItem={featureDevelop} />
         {_renderBottomSpace()}
       </Content>
     </Container>

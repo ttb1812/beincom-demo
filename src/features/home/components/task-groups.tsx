@@ -1,11 +1,16 @@
 import React, { memo, useCallback, useMemo } from 'react';
-import { FlatList, StyleSheet, Pressable } from 'react-native';
+import { FlatList, Pressable, StyleSheet } from 'react-native';
 import { Box, IconCategory, PieChart, Text } from '../../../common/components';
 import { ITheme, scaledSize, useAppTheme } from '../../../common/utils';
 
 const MOCK_DATA = new Array(6);
 
-const TaskGroups = () => {
+interface ITaskGroupsProps {
+  onPressGroupItem?: () => void;
+}
+
+const TaskGroups = (props: ITaskGroupsProps) => {
+  const { onPressGroupItem } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
 
@@ -30,7 +35,7 @@ const TaskGroups = () => {
 
   const _renderGroupItem = useCallback(() => {
     return (
-      <Pressable>
+      <Pressable onPress={onPressGroupItem}>
         <Box style={styles.groupItemContainer}>
           <Box rowAlignCenter>
             <IconCategory
@@ -49,14 +54,18 @@ const TaskGroups = () => {
               radius={scaledSize.scale(26)}
               innerRadius={scaledSize.scale(20)}
               innerCircleColor={theme.palette.neutral6}
+              percentTextColor={theme.palette.neutral1}
+              variants="caption1"
             />
           </Box>
         </Box>
       </Pressable>
     );
   }, [
+    onPressGroupItem,
     styles.groupItemContainer,
     theme.icons.calendar,
+    theme.palette.neutral1,
     theme.palette.neutral2,
     theme.palette.neutral5,
     theme.palette.neutral6,

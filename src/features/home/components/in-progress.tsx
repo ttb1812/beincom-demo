@@ -1,11 +1,14 @@
 import React, { memo, useCallback, useMemo } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, Pressable, StyleSheet } from 'react-native';
 import { Box, ProgressBar, Text } from '../../../common/components';
 import { ITheme, scaledSize, useAppTheme } from '../../../common/utils';
 
 const MOCK_DATA = new Array(6);
-
-const InProgress = () => {
+interface IInProgressProps {
+  onPressProgressItem?: () => void;
+}
+const InProgress = (props: IInProgressProps) => {
+  const { onPressProgressItem } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
 
@@ -30,19 +33,21 @@ const InProgress = () => {
 
   const _renderProgressItem = useCallback(() => {
     return (
-      <Box style={styles.progressItemContainer}>
-        <Box justifyContent="space-between">
-          <Text variants="title3">Office Project</Text>
+      <Pressable onPress={onPressProgressItem}>
+        <Box style={styles.progressItemContainer}>
+          <Box justifyContent="space-between">
+            <Text variants="title3">Office Project</Text>
+          </Box>
+          <Box>
+            <Text variants="title2" numberOfLines={2}>
+              Grocery shopping app design
+            </Text>
+          </Box>
+          <ProgressBar current={50} goal={100} />
         </Box>
-        <Box>
-          <Text variants="title2" numberOfLines={2}>
-            Grocery shopping app design
-          </Text>
-        </Box>
-        <ProgressBar current={50} goal={100} />
-      </Box>
+      </Pressable>
     );
-  }, [styles.progressItemContainer]);
+  }, [onPressProgressItem, styles.progressItemContainer]);
 
   return (
     <Box paddingTop={scaledSize.moderateScale(28)}>

@@ -22,3 +22,4 @@ export * from './calendar-widget';
 export * from './icon-category';
 export * from './pie-chart';
 export * from './check-box';
+export * from './popup';

@@ -23,12 +23,16 @@ function Footer(props: IFooter) {
       <Box
         width={scaledSize.deviceWidth}
         safeAreaBottom
-        backgroundColor={backgroundColor || theme.colors.background}
-        shadow={shadow || '1'}
+        backgroundColor={backgroundColor}
+        shadow={shadow}
         paddingHorizontal={
           paddingHorizontal ||
           scaledSize.moderateScale(theme.sizes.horizontalPadding)
         }
+        paddingBottom={Platform.select({
+          ios: 0,
+          android: scaledSize.moderateScale(16),
+        })}
         {...restProps}
       >
         {children}

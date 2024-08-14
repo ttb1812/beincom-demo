@@ -1,7 +1,7 @@
-import React, { memo, useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import { FlatList, Platform, StyleSheet } from 'react-native';
-import { Box, Button, Drawer, Section } from '../../common/components';
-import { logger, scaledSize } from '../../common/utils';
+import { Box, Drawer, Section } from '../../common/components';
+import { scaledSize } from '../../common/utils';
 import { ProfileInformation } from './components';
 import { IMainMenu } from './types';
 import useProfileScreen from './use-profile-screen';
@@ -12,8 +12,15 @@ const ProfileScreen = () => {
     onPressItem,
     drawerLanguageVisible,
     setDrawerLanguageVisible,
+    featureDevelop,
   } = useProfileScreen();
   const styles = useMemo(() => makeStyles(), []);
+
+  const LANGUAGE = [
+    { title: 'English', isSselected: true },
+    { title: 'Tiếng Việt', isSelected: false },
+  ];
+  const [test, setTest] = useState(LANGUAGE[0]);
 
   const _renderItem = useCallback(
     (data: IMainMenu) => {
@@ -53,7 +60,7 @@ const ProfileScreen = () => {
             <Box paddingBottom={scaledSize.moderateScale(28)} safeAreaTop>
               <ProfileInformation
                 onPress={() => {
-                  logger.log('ProfileInformation =>>>>>>');
+                  featureDevelop();
                 }}
               />
             </Box>
@@ -64,23 +71,15 @@ const ProfileScreen = () => {
             <Box height={scaledSize.moderateScale(24)} />
           )}
           showsVerticalScrollIndicator={false}
-          ListFooterComponent={
-            <Box paddingTop={scaledSize.moderateScale(24)}>
-              <Button
-                text="Sign Out"
-                onPress={() => {
-                  logger.log('Sign out =>>>>>');
-                }}
-                styleTxt={styles.signOutText}
-              />
-              <Box style={styles.bottomSpace} />
-            </Box>
-          }
+          ListFooterComponent={<Box style={styles.bottomSpace} />}
         />
       </Box>
       <Drawer.SingleDrawer
         title="Language"
+        data={LANGUAGE}
         visible={drawerLanguageVisible}
+        itemSelected={test}
+        onSelect={item => setTest(item as any)}
         onClose={() => {
           setDrawerLanguageVisible(false);
         }}

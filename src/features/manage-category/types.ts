@@ -55,4 +55,4 @@ export const INITIAL_CATEGORIES = [
     show: true,
     tasks: [],
   },
-];
+] as ICategories[];

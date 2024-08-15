@@ -2,7 +2,6 @@ import _ from 'lodash';
 import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 import {
   Animated,
-  Platform,
   Pressable,
   StyleSheet,
   TextInput,
@@ -109,6 +108,7 @@ const SearchBar = () => {
               onBlur={onBlur}
               onChangeText={onChangeSearch}
               value={searchQuery}
+              style={styles.textInput}
             />
           </Box>
           {_clearTextBtn()}
@@ -149,10 +149,7 @@ const makeStyles = (theme: ITheme) =>
       alignItems: 'center',
       justifyContent: 'space-between',
       paddingHorizontal: scaledSize.moderateScale(16),
-      paddingVertical: Platform.select({
-        android: 0,
-        ios: scaledSize.moderateScale(10),
-      }),
+      paddingVertical: scaledSize.moderateScale(10),
       borderWidth: 1,
       borderRadius: Number.MAX_SAFE_INTEGER,
       backgroundColor: theme.palette.neutral6,
@@ -165,5 +162,8 @@ const makeStyles = (theme: ITheme) =>
     },
     cancelText: {
       fontWeight: '500',
+    },
+    textInput: {
+      padding: 0,
     },
   });

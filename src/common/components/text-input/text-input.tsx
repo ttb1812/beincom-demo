@@ -3,28 +3,38 @@ import {
   TextInput as RNTextInput,
   TextInputProps,
 } from 'react-native';
-import React, { memo, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { Box } from '../box';
 import { Text } from '../text';
 import { ITheme, scaledSize, useAppTheme } from '../../utils';
+import Color from 'color';
 
 interface ITextInputProps extends TextInputProps {
   title?: string;
   multiline?: boolean;
+  status?: 'normal' | 'error';
 }
 
 const TextInput = (props: ITextInputProps) => {
-  const { title, multiline, value, onChangeText } = props;
+  const { title, multiline, value, onChangeText, status = 'normal' } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
-  return (
-    <Box style={styles.container}>
-      <Box>
-        <Text variants="caption2" style={styles.title}>
-          {title}
-        </Text>
-      </Box>
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const inputOutlineStyle: any = [styles.container];
 
+  const getInputOutlineStyle = useCallback(() => {
+    switch (status) {
+      case 'error':
+        inputOutlineStyle.push(styles.outlineStyleError);
+        break;
+      default:
+        break;
+    }
+  }, [inputOutlineStyle, status, styles.outlineStyleError]);
+
+  const _renderTextInput = useCallback(() => {
+    getInputOutlineStyle();
+    return (
       <RNTextInput
         placeholder="Do something..."
         value={value}
@@ -32,6 +42,24 @@ const TextInput = (props: ITextInputProps) => {
         style={[theme.styles.body3, styles.textInput]}
         multiline={multiline}
       />
+    );
+  }, [
+    getInputOutlineStyle,
+    multiline,
+    onChangeText,
+    styles.textInput,
+    theme.styles.body3,
+    value,
+  ]);
+
+  return (
+    <Box style={inputOutlineStyle}>
+      <Box>
+        <Text variants="caption2" style={styles.title}>
+          {title}
+        </Text>
+      </Box>
+      {_renderTextInput()}
     </Box>
   );
 };
@@ -53,5 +81,13 @@ const makeStyles = (theme: ITheme) =>
       fontWeight: '400',
       paddingTop: scaledSize.moderateScale(8),
       paddingBottom: 0,
+    },
+    outlineStyleError: {
+      borderWidth: 1,
+      borderColor: theme.palette.semantic1,
+      backgroundColor: Color(theme.palette.semantic1)
+        .alpha(0.08)
+        .rgb()
+        .toString(),
     },
   });

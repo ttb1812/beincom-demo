@@ -10,7 +10,7 @@ import {
   Text,
 } from '../../common/components';
 import { ITheme, scaledSize, useAppTheme } from '../../common/utils';
-import { CategoryItem, HeaderItem } from './components';
+import { CategoryItem } from './components';
 import { getCategories } from './manage-category-slice';
 
 const ManageCategoryScreen = () => {
@@ -61,7 +61,6 @@ const ManageCategoryScreen = () => {
       }}
     >
       <Box flex>
-        <HeaderItem />
         <FlatList
           contentContainerStyle={styles.contentContainerStyle}
           data={categories}

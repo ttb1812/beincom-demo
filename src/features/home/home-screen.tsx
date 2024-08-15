@@ -9,7 +9,7 @@ import {
   PopupManager,
 } from '../../common/components';
 import { scaledSize, useAppTheme } from '../../common/utils';
-import { InProgress, TaskGroups, TodayTask } from './components';
+import { TaskGroups, TodayTask } from './components';
 
 const HomeScreen = () => {
   const theme = useAppTheme();
@@ -42,7 +42,6 @@ const HomeScreen = () => {
     >
       <Content contentContainerStyle={styles.content} scrollEnabled>
         <TodayTask />
-        <InProgress onPressProgressItem={featureDevelop} />
         <TaskGroups onPressGroupItem={featureDevelop} />
         {_renderBottomSpace()}
       </Content>

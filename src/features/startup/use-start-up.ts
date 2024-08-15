@@ -8,10 +8,10 @@ const useStartUp = () => {
   const dispatch = useDispatch();
   const generateDates = useCallback(() => {
     const today = moment();
-    const daysArray = Array.from({ length: 61 }, (_, index) =>
+    const daysArray = Array.from({ length: 15 }, (_, index) =>
       today
         .clone()
-        .add(index - 30, 'days')
+        .add(index - 7, 'days')
         .format('YYYY-MM-DD'),
     );
     dispatch(CalendarAction.setCalendarCarousel({ dates: daysArray }));

@@ -79,6 +79,10 @@ const BottomTabBar = (props: BottomTabBarProps) => {
     styles.overlayContainer,
   ]);
 
+  if (keyboardVisible && Platform.OS === 'android') {
+    return <></>;
+  }
+
   return (
     <Box style={[styles.container, styles.overlay]}>
       <Image

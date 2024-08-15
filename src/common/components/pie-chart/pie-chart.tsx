@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
-import { PieChart } from 'react-native-gifted-charts';
+import { PieChart, pieDataItem } from 'react-native-gifted-charts';
 import { Box } from '../box';
 import { scaledSize, useAppTheme } from '../../utils';
 import { Text } from '../text';
@@ -12,6 +12,9 @@ interface IPieChartViewProps {
   innerRadius?: number;
   percentTextColor?: string;
   variants?: TextVariants;
+  dataChart: pieDataItem[];
+  percent: number;
+  showPercent?: boolean;
 }
 const PieChartView = (props: IPieChartViewProps) => {
   const theme = useAppTheme();
@@ -21,25 +24,26 @@ const PieChartView = (props: IPieChartViewProps) => {
     innerRadius,
     percentTextColor = theme.palette.neutral6,
     variants = 'title3',
+    dataChart,
+    percent = 0,
+    showPercent = true,
   } = props;
-  const data = [
-    { value: 1, color: theme.palette.primary2 },
-    { value: 10, color: theme.palette.primary6 },
-  ];
   return (
     <Box style={styles.container}>
       <PieChart
-        data={data}
+        data={dataChart}
         donut
         radius={radius}
         innerRadius={innerRadius}
         innerCircleColor={innerCircleColor}
       />
-      <Box style={styles.overlay}>
-        <Text color={percentTextColor} variants={variants}>
-          85%
-        </Text>
-      </Box>
+      {showPercent && (
+        <Box style={styles.overlay}>
+          <Text color={percentTextColor} variants={variants}>
+            {`${percent}%`}
+          </Text>
+        </Box>
+      )}
     </Box>
   );
 };

@@ -31,14 +31,19 @@ const TodayTask = () => {
       <Box flex center>
         <Box>
           <PieChart
+            dataChart={[
+              { value: 10, color: theme.palette.primary2 },
+              { value: 0, color: theme.palette.primary6 },
+            ]}
             radius={scaledSize.scale(50)}
             innerRadius={scaledSize.scale(38)}
             innerCircleColor={theme.palette.primary1}
+            percent={0}
           />
         </Box>
       </Box>
     );
-  }, [theme.palette.primary1]);
+  }, [theme.palette.primary1, theme.palette.primary2, theme.palette.primary6]);
 
   return (
     <Box style={styles.container}>

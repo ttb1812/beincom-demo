@@ -5,8 +5,12 @@ import { Box } from '../box';
 import { IconCategory } from '../icon-category';
 import { Text } from '../text';
 import { PieChart } from '../pie-chart';
-import { ICategories } from '../../../features/manage-category/types';
+import {
+  ICategories,
+  STATUS_ENUM,
+} from '../../../features/manage-category/types';
 import _ from 'lodash';
+import { pieDataItem } from 'react-native-gifted-charts';
 
 interface IGroupItemProps {
   data: ICategories;
@@ -17,13 +21,36 @@ const GroupItem = (props: IGroupItemProps) => {
   const { data, onPress } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
+  const PROGRESS_COLOR = theme.palette.primary2;
+  const CURRENT_COLOR = theme.palette.primary6;
+  const completedTasks = data.tasks?.filter(
+    item => item.status === STATUS_ENUM.COMPLETED,
+  );
+  const dataChart = useMemo(() => {
+    return [
+      { value: completedTasks?.length, color: PROGRESS_COLOR },
+      { value: data.tasks?.length, color: CURRENT_COLOR },
+    ];
+  }, [
+    CURRENT_COLOR,
+    PROGRESS_COLOR,
+    completedTasks?.length,
+    data.tasks?.length,
+  ]) as pieDataItem[];
+
+  const percent = useMemo(() => {
+    return (
+      ((completedTasks?.length || 0) * 100) / (data.tasks || [])?.length || 0
+    );
+  }, [completedTasks?.length, data.tasks]);
+
   const _renderNumberOfTask = useCallback(() => {
     if (_.isEmpty(data.tasks) || _.isUndefined(data.tasks)) {
       return <></>;
     } else if ((data.tasks as any).length > 1) {
       return (
         <Text variants="body3" color={theme.palette.neutral2}>
-          23 tasks
+          {(data.tasks as any).length} tasks
         </Text>
       );
     } else {
@@ -49,11 +76,14 @@ const GroupItem = (props: IGroupItemProps) => {
         </Box>
         <Box>
           <PieChart
+            dataChart={dataChart}
             radius={scaledSize.scale(26)}
             innerRadius={scaledSize.scale(20)}
             innerCircleColor={theme.palette.neutral6}
             percentTextColor={theme.palette.neutral1}
             variants="caption1"
+            percent={percent}
+            showPercent={(data?.tasks || [])?.length > 0}
           />
         </Box>
       </Box>

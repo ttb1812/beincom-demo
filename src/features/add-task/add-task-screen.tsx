@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React, { memo, useCallback, useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
   Button,
@@ -9,42 +9,77 @@ import {
   Content,
   DatePicker,
   Drawer,
-  Footer,
   Header,
   SelectionGroup,
   TextInput,
 } from '../../common/components';
 import { IItemList } from '../../common/components/drawer/components/single-drawer';
-import { NavigationService, scaledSize, ScreenName } from '../../common/utils';
-import { getCategories } from '../manage-category/manage-category-slice';
-import { ITaskItem } from '../manage-category/types';
+import {
+  NavigationService,
+  scaledSize,
+  ScreenName,
+  ternaryOperator,
+} from '../../common/utils';
+import {
+  CategoriesAction,
+  getCategories,
+} from '../manage-category/manage-category-slice';
+import { ITaskItem, STATUS_ENUM } from '../manage-category/types';
 
 const AddTaskScreen = () => {
+  const dispatch = useDispatch();
   const PADDING_TOP = scaledSize.moderateScale(24);
   const categories = useSelector(getCategories);
   const formattedCategories = categories.map(item => {
     return {
       id: item.id,
       title: item.categoryName,
+      subTitle: item.iconType,
     };
   }) as IItemList[];
   const [categorySelected, setcategorySelected] = useState<IItemList>(
     formattedCategories[0],
   );
-  const [categoriesmModalVisible, setCategoriesDrawerVisible] = useState(false);
-
+  const [categoriesModalVisible, setCategoriesDrawerVisible] = useState(false);
   const [task, setTask] = useState<ITaskItem>({
     id: ''.uuidv4(),
     taskName: '',
-    decription: '',
+    description: '',
     startDate: '',
     endDate: '',
-    categoryId: formattedCategories[0]?.id,
+    status: STATUS_ENUM.TO_DO,
+    iconTypeCategory: categories[0].iconType,
+    categoryId: categories[0].id,
   });
+  const [startCheck, setStartCheck] = useState(false);
 
   const onOpen = () => {
     setCategoriesDrawerVisible(true);
   };
+
+  const addTask = useCallback(() => {
+    const updatedCategories = categories.map((cat: any) => {
+      if (cat.id === categorySelected.id) {
+        return {
+          ...cat,
+          tasks: [...cat?.tasks, task],
+        };
+      } else {
+        return cat;
+      }
+    });
+    dispatch(CategoriesAction.setCategories({ categories: updatedCategories }));
+    NavigationService.navigate(ScreenName.tasksScreen);
+  }, [categories, categorySelected.id, dispatch, task]);
+
+  const handlePressAdd = useCallback(() => {
+    if (!task.taskName || !task.description) {
+      setStartCheck(true);
+    } else {
+      setStartCheck(false);
+      addTask();
+    }
+  }, [addTask, task.description, task.taskName]);
 
   return (
     <Container
@@ -62,6 +97,11 @@ const AddTaskScreen = () => {
         />
         <Box paddingTop={PADDING_TOP}>
           <TextInput
+            status={ternaryOperator(
+              startCheck && !task.taskName,
+              'error',
+              'normal',
+            )}
             title="Task Name"
             value={task.taskName}
             onChangeText={text => {
@@ -71,11 +111,16 @@ const AddTaskScreen = () => {
         </Box>
         <Box paddingTop={PADDING_TOP}>
           <TextInput
+            status={ternaryOperator(
+              startCheck && !task.description,
+              'error',
+              'normal',
+            )}
             title="Description"
             multiline
-            value={task.decription}
+            value={task.description}
             onChangeText={text => {
-              setTask({ ...task, decription: text });
+              setTask({ ...task, description: text });
             }}
           />
         </Box>
@@ -98,24 +143,24 @@ const AddTaskScreen = () => {
             }}
           />
         </Box>
+
+        <Box paddingTop={PADDING_TOP}>
+          <Button text="Add" onPress={handlePressAdd} />
+        </Box>
       </Content>
-      <Footer>
-        <Button
-          text="Add"
-          onPress={() => {
-            NavigationService.navigate(ScreenName.tasksScreen);
-          }}
-        />
-      </Footer>
 
       <Drawer.SingleDrawer
         title="Categories"
         data={formattedCategories}
-        visible={categoriesmModalVisible}
+        visible={categoriesModalVisible}
         itemSelected={categorySelected}
         onSelect={item => {
           setcategorySelected(item as any);
-          setTask({ ...task, categoryId: item?.id });
+          setTask({
+            ...task,
+            categoryId: item?.id,
+            iconTypeCategory: item?.subTitle as any,
+          });
         }}
         onClose={() => {
           setCategoriesDrawerVisible(false);

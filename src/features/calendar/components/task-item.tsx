@@ -1,30 +1,43 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import {
-  Box,
-  IconCategory,
-  SvgFromString,
-  Text,
-} from '../../../common/components';
+import { Box, SvgFromString, Text } from '../../../common/components';
 import { ITheme, scaledSize, useAppTheme } from '../../../common/utils';
+import { ITaskItem, STATUS_ENUM } from '../../manage-category/types';
 interface ITaskItemProps {
+  data: ITaskItem;
   onPress?: () => void;
 }
 
 const TaskItem = (props: ITaskItemProps) => {
-  const { onPress } = props;
+  const { data, onPress } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
+
+  const _renderLabelTxt = useMemo(() => {
+    if (data.status === STATUS_ENUM.COMPLETED) {
+      return 'Completed';
+    } else {
+      return 'To do';
+    }
+  }, [data.status]);
+
+  const _renderCategoryIcon = useCallback(() => {
+    return (
+      <Box>
+        <Text>{data.iconTypeCategory}</Text>
+      </Box>
+    );
+  }, [data.iconTypeCategory]);
 
   const _renderStatusLabel = useCallback(() => {
     return (
       <Box style={styles.statusLabel}>
         <Text variants="caption2" color={theme.palette.primary1}>
-          Completed
+          {_renderLabelTxt}
         </Text>
       </Box>
     );
-  }, [styles.statusLabel, theme.palette.primary1]);
+  }, [_renderLabelTxt, styles.statusLabel, theme.palette.primary1]);
 
   return (
     <Pressable onPress={onPress}>
@@ -35,9 +48,9 @@ const TaskItem = (props: ITaskItemProps) => {
             color={theme.palette.neutral2}
             numberOfLines={1}
           >
-            Grocery shopping app design
+            {data?.description}
           </Text>
-          <Text variants="title2">Market Research</Text>
+          <Text variants="title2">{data?.taskName}</Text>
           <Box rowAlignCenter>
             <SvgFromString svg={theme.icons.calendar} />
             <Box marginLeft={scaledSize.moderateScale(8)}>
@@ -52,12 +65,7 @@ const TaskItem = (props: ITaskItemProps) => {
           </Box>
         </Box>
         <Box style={styles.rightContent}>
-          <Box style={styles.iconCategory}>
-            <IconCategory
-              icon={theme.icons.calendar}
-              backgroundColor={theme.palette.neutral5}
-            />
-          </Box>
+          <Box style={styles.iconCategory}>{_renderCategoryIcon()}</Box>
           {_renderStatusLabel()}
         </Box>
       </Box>

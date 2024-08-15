@@ -2,58 +2,57 @@ export interface IInitialStateProps {
   categories: ICategories[];
 }
 
+export enum STATUS_ENUM {
+  TO_DO = 'to_do',
+  COMPLETED = 'completed',
+}
+
 export interface ITaskItem {
   id?: string;
   taskName?: string;
-  decription?: string;
-  status?: string;
+  description?: string;
+  status?: STATUS_ENUM;
   startDate?: string;
   endDate?: string;
   categoryId?: string;
+  iconTypeCategory?: 'jobs' | 'personal' | 'favorite' | 'birthday';
 }
 
 export interface ICategories {
   id: string;
   categoryName: string;
-  iconType: string;
+  iconType: 'jobs' | 'personal' | 'favorite' | 'birthday';
   tasks?: ITaskItem[];
   show: boolean;
 }
 
 export const INITIAL_CATEGORIES = [
   {
-    id: 'category/1',
+    id: ''.uuidv4(),
     categoryName: 'Jobs',
     iconType: 'jobs',
     show: true,
-    tasks: [
-      {
-        id: 'category/1',
-        taskName: 'research',
-        decription: 'research decription',
-        status: 'toDo',
-        startDate: '',
-        endDate: '',
-        categoryId: 'category/1',
-      },
-    ],
+    tasks: [],
   },
   {
-    id: 'category/2',
+    id: ''.uuidv4(),
     categoryName: 'Personal',
     iconType: 'personal',
     show: true,
+    tasks: [],
   },
   {
-    id: 'category/3',
+    id: ''.uuidv4(),
     categoryName: 'Favorite',
     iconType: 'favorite',
     show: true,
+    tasks: [],
   },
   {
-    id: 'category/4',
+    id: ''.uuidv4(),
     categoryName: 'Birthday',
     iconType: 'birthday',
     show: true,
+    tasks: [],
   },
 ];

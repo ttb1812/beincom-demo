@@ -51,7 +51,7 @@ const CalendarScreen = () => {
     if (scrollY > scaledSize.verticalScale(128)) {
       Animated.timing(headerHeight, {
         toValue: 0,
-        duration: 100,
+        duration: 80,
         useNativeDriver: false,
       }).start();
     } else {
@@ -59,7 +59,7 @@ const CalendarScreen = () => {
       if (!isAtBottom) {
         Animated.timing(headerHeight, {
           toValue: 1,
-          duration: 100,
+          duration: 80,
           useNativeDriver: false,
         }).start();
       }
@@ -157,8 +157,8 @@ const CalendarScreen = () => {
           <Animated.FlatList
             data={tasks}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={() => {
-              return <TaskItem onPress={featureDevelop} />;
+            renderItem={({ item }) => {
+              return <TaskItem data={item} onPress={featureDevelop} />;
             }}
             ItemSeparatorComponent={() => (
               <Box height={scaledSize.moderateScale(16)} />
@@ -188,7 +188,7 @@ const makeStyles = () =>
     },
     bottomSpace: {
       height: Platform.select({
-        android: scaledSize.verticalScale(630),
+        android: scaledSize.verticalScale(630) + scaledSize.deviceHeight,
         ios: scaledSize.verticalScale(660),
       }),
     },

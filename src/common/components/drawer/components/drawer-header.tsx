@@ -4,11 +4,7 @@ import { Box } from '../../box';
 import { Text } from '../../text';
 import { IconButton } from '../../icon-button';
 import { scaledSize, useAppTheme } from '../../../utils';
-
-interface IDrawerHeaderProps {
-  onClose?: () => void;
-  title?: string;
-}
+import { IDrawerHeaderProps } from '../types';
 
 const DrawerHeader = (props: IDrawerHeaderProps) => {
   const { onClose, title } = props;

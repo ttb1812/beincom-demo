@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "RNSplashScreen.h"
 
 #import <React/RCTBundleURLProvider.h>
 
@@ -16,6 +17,7 @@
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
+  [RNSplashScreen show];
   return [self bundleURL];
 }
 

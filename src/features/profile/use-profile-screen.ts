@@ -1,16 +1,32 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import {
   AppConfig,
+  changeLanguage,
   NavigationService,
   ScreenName,
+  translate,
   useAppTheme,
 } from '../../common/utils';
 import { IMainMenu, MenuActionKeys } from './types';
 import { PopupManager } from '../../common/components';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLanguage, StartUpAction } from '../startup/start-up-slice';
 
 const useProfileScreen = () => {
   const theme = useAppTheme();
   const [drawerLanguageVisible, setDrawerLanguageVisible] = useState(false);
+  const languages = useSelector(getLanguage);
+  const dispatch = useDispatch();
+
+  const formattedLanguage = useMemo(() => {
+    return languages.map(item => {
+      return {
+        title: item.title,
+        subTitle: item.code,
+        isSelected: item.isSelected,
+      };
+    });
+  }, [languages]);
 
   const openLanguageDrawer = () => {
     setDrawerLanguageVisible(true);
@@ -19,65 +35,65 @@ const useProfileScreen = () => {
   const mainMenuConfig = [
     {
       sectionId: 1,
-      sectionName: 'Customize',
+      sectionName: 'profile.customize',
       item: [
         {
           key: MenuActionKeys.sync,
           icon: theme.icons.cloud,
-          title: 'Sync',
+          title: 'profile.sync',
           subTitle: undefined,
           mode: 'develop',
         },
         {
           key: MenuActionKeys.theme,
           icon: theme.icons.brush,
-          title: 'Theme',
+          title: 'profile.theme',
           subTitle: undefined,
           mode: 'develop',
         },
         {
           key: MenuActionKeys.category,
           icon: theme.icons.elementPlus,
-          title: 'Category',
+          title: 'profile.category',
           subTitle: undefined,
         },
         {
           key: MenuActionKeys.language,
           icon: theme.icons.globalIcon,
-          title: 'Language',
+          title: 'profile.language',
           subTitle: undefined,
         },
       ],
     },
     {
       sectionId: 2,
-      sectionName: 'Date & Time',
+      sectionName: 'profile.dateTime',
       item: [
         {
           key: MenuActionKeys.firstDateOfWeek,
           icon: theme.icons.numSeven,
-          title: 'First Date Of Week',
+          title: 'profile.firstDateOfWeek',
           subTitle: 'Auto',
           mode: 'develop',
         },
         {
           key: MenuActionKeys.timeFormat,
           icon: theme.icons.clock,
-          title: 'Time Format',
-          subTitle: 'Default',
+          title: 'profile.timeFormat',
+          subTitle: 'profile.default',
           mode: 'develop',
         },
         {
           key: MenuActionKeys.dateFormat,
           icon: theme.icons.calendarStick,
-          title: 'Date Format',
+          title: 'profile.dateFormat',
           subTitle: '2024/08/12',
           mode: 'develop',
         },
         {
           key: MenuActionKeys.dueDate,
           icon: theme.icons.calendarDate,
-          title: 'Due Date',
+          title: 'profile.dueDate',
           subTitle: 'Today',
           mode: 'develop',
         },
@@ -90,7 +106,7 @@ const useProfileScreen = () => {
         {
           key: MenuActionKeys.helpAndFeedback,
           icon: theme.icons.messages,
-          title: 'Help & Feedback',
+          title: 'profile.helpFeedback',
           subTitle: undefined,
           mode: 'develop',
         },
@@ -98,14 +114,14 @@ const useProfileScreen = () => {
         {
           key: MenuActionKeys.about,
           icon: theme.icons.profileTick,
-          title: 'About',
+          title: 'profile.about',
           subTitle: `v${AppConfig.APP_VERSION}`,
           mode: 'develop',
         },
         {
           key: MenuActionKeys.shareApp,
           icon: theme.icons.shareBold,
-          title: 'Share App',
+          title: 'profile.shareApp',
           subTitle: undefined,
           mode: 'develop',
           showIconRight: false,
@@ -116,13 +132,27 @@ const useProfileScreen = () => {
 
   const featureDevelop = useCallback(() => {
     PopupManager.instance?.show({
-      title: 'Feature development!',
+      title: translate('featureDevelopmemt'),
       message: '',
       confirmButton: {
-        text: 'Ok',
+        text: translate('ok'),
       },
     });
   }, []);
+
+  const handleSelectedLangue = useCallback(
+    (la: any) => {
+      const newLanguages = languages?.map(item => {
+        return {
+          ...item,
+          isSelected: item?.code === la?.subTitle,
+        };
+      });
+      changeLanguage(la.subTitle);
+      dispatch(StartUpAction.setLanguage({ language: newLanguages }));
+    },
+    [dispatch, languages],
+  );
 
   const handlePressItem = useCallback(
     (key: typeof MenuActionKeys | string) => {
@@ -146,6 +176,8 @@ const useProfileScreen = () => {
     drawerLanguageVisible,
     setDrawerLanguageVisible,
     featureDevelop,
+    formattedLanguage,
+    handleSelectedLangue,
   };
 };
 

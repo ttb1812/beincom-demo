@@ -1,7 +1,7 @@
-import { Pressable, StyleSheet } from 'react-native';
 import React, { memo } from 'react';
-import { scaledSize, useAppTheme } from '../../../common/utils';
+import { Pressable, StyleSheet } from 'react-native';
 import { Box, IconCategory, Text } from '../../../common/components';
+import { scaledSize, translate } from '../../../common/utils';
 import { ICategories } from '../types';
 
 interface ICategoryItemProps {
@@ -11,19 +11,15 @@ interface ICategoryItemProps {
 
 const CategoryItem = (props: ICategoryItemProps) => {
   const { data, onPressCategoryItem } = props;
-  const theme = useAppTheme();
   return (
     <Pressable onPress={onPressCategoryItem}>
       <Box style={styles.container}>
         <Box>
-          <IconCategory
-            icon={theme.icons.calendar}
-            backgroundColor={theme.palette.neutral5}
-          />
+          <IconCategory type={data.iconType} />
         </Box>
 
         <Box marginLeft={scaledSize.moderateScale(16)}>
-          <Text variants="body2">{data.categoryName}</Text>
+          <Text variants="body2">{translate(data.categoryName)}</Text>
         </Box>
       </Box>
     </Pressable>

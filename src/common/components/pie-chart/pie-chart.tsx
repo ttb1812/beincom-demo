@@ -1,21 +1,11 @@
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
-import { PieChart, pieDataItem } from 'react-native-gifted-charts';
-import { Box } from '../box';
+import { PieChart } from 'react-native-gifted-charts';
 import { scaledSize, useAppTheme } from '../../utils';
+import { Box } from '../box';
 import { Text } from '../text';
-import { TextVariants } from '../text/types';
+import { IPieChartViewProps } from './types';
 
-interface IPieChartViewProps {
-  innerCircleColor?: string;
-  radius?: number;
-  innerRadius?: number;
-  percentTextColor?: string;
-  variants?: TextVariants;
-  dataChart: pieDataItem[];
-  percent: number;
-  showPercent?: boolean;
-}
 const PieChartView = (props: IPieChartViewProps) => {
   const theme = useAppTheme();
   const {
@@ -36,6 +26,8 @@ const PieChartView = (props: IPieChartViewProps) => {
         radius={radius}
         innerRadius={innerRadius}
         innerCircleColor={innerCircleColor}
+        isAnimated={true}
+        animationDuration={200}
       />
       {showPercent && (
         <Box style={styles.overlay}>

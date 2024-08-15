@@ -1,0 +1,66 @@
+{
+  "common": {
+    "add": "Add",
+    "ok": "Ok",
+    "featureDevelopmemt": "Feature Development!",
+    "tasks": "{{number}} tasks",
+    "task": "{{number}} task",
+    "jobs": "Jobs",
+    "personal": "Personal",
+    "favorite": "Favorite",
+    "birthday": "Birthday",
+    "all": "All",
+    "todo": " To do",
+    "completed": "Completed",
+    "search": "Search...",
+    "cancel": "cancel",
+    "dosomething": "Do something..."
+  },
+  "application": {
+    "home": {
+      "title": "Home",
+      "viewTask": "View Task",
+      "yourTodayTaskAlmostDone": "Your today's task almost done!",
+      "taskGroups": "Task Groups"
+    },
+    "calendar": { "title": "Calendar", "todayTasks": "Todays Tasks" },
+    "addTask": {
+      "title": "Add Task",
+      "taskName": "Task Name",
+      "description": "Description",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "categories": "Categories",
+      "category": "Category"
+    },
+    "tasks": { "title": "Tasks" },
+    "profile": {
+      "title": "Profile",
+      "customize": "Customize",
+      "sync": "Sync",
+      "theme": "Theme",
+      "category": "Category",
+      "language": "Language",
+      "dateTime": "Date & Time",
+      "firstDateOfWeek": "First Date Of Week",
+      "default": "Default",
+      "timeFormat": "Time Format",
+      "dateFormat": "Date Format",
+      "dueDate": "Due Date",
+      "helpFeedback": "Help & Feedback",
+      "about": "About",
+      "shareApp": "Share App",
+      "signInOrSignUp": "Sign in or Sign up"
+    },
+    "bottomTab": {
+      "home": "Home",
+      "calendar": "Calendar",
+      "tasks": "Tasks",
+      "profile": "Profile"
+    },
+    "manageCategories": {
+      "title": "Manage Categories",
+      "createNewCategory": "Create category"
+    }
+  }
+}

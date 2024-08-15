@@ -1,8 +1,19 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import { Box, SvgFromString, Text } from '../../../common/components';
-import { ITheme, scaledSize, useAppTheme } from '../../../common/utils';
+import {
+  Box,
+  IconCategory,
+  SvgFromString,
+  Text,
+} from '../../../common/components';
+import {
+  ITheme,
+  scaledSize,
+  translate,
+  useAppTheme,
+} from '../../../common/utils';
 import { ITaskItem, STATUS_ENUM } from '../../manage-category/types';
+import Color from 'color';
 interface ITaskItemProps {
   data: ITaskItem;
   onPress?: () => void;
@@ -13,31 +24,30 @@ const TaskItem = (props: ITaskItemProps) => {
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
 
-  const _renderLabelTxt = useMemo(() => {
+  const statusLabel = useMemo(() => {
     if (data.status === STATUS_ENUM.COMPLETED) {
-      return 'Completed';
+      return { title: translate('completed'), color: theme.palette.neutral2 };
     } else {
-      return 'To do';
+      return { title: translate('todo'), color: theme.palette.primary6 };
     }
-  }, [data.status]);
+  }, [data.status, theme.palette.neutral2, theme.palette.primary6]);
 
   const _renderCategoryIcon = useCallback(() => {
-    return (
-      <Box>
-        <Text>{data.iconTypeCategory}</Text>
-      </Box>
-    );
+    return <IconCategory type={data.iconTypeCategory ?? ''} />;
   }, [data.iconTypeCategory]);
 
   const _renderStatusLabel = useCallback(() => {
     return (
-      <Box style={styles.statusLabel}>
-        <Text variants="caption2" color={theme.palette.primary1}>
-          {_renderLabelTxt}
+      <Box
+        style={styles.statusLabel}
+        backgroundColor={Color(statusLabel.color).alpha(0.2).rgb().toString()}
+      >
+        <Text variants="caption2" color={statusLabel.color}>
+          {statusLabel.title}
         </Text>
       </Box>
     );
-  }, [_renderLabelTxt, styles.statusLabel, theme.palette.primary1]);
+  }, [statusLabel, styles.statusLabel]);
 
   return (
     <Pressable onPress={onPress}>
@@ -50,9 +60,11 @@ const TaskItem = (props: ITaskItemProps) => {
           >
             {data?.description}
           </Text>
-          <Text variants="title2">{data?.taskName}</Text>
+          <Text variants="title2" numberOfLines={1}>
+            {data?.taskName}
+          </Text>
           <Box rowAlignCenter>
-            <SvgFromString svg={theme.icons.calendar} />
+            <SvgFromString svg={theme.icons.clock} />
             <Box marginLeft={scaledSize.moderateScale(8)}>
               <Text
                 variants="body2"
@@ -93,7 +105,6 @@ const makeStyles = (theme: ITheme) =>
       justifyContent: 'space-between',
     },
     statusLabel: {
-      backgroundColor: theme.palette.primary6,
       borderRadius: Number.MAX_SAFE_INTEGER,
       justifyContent: 'center',
       alignItems: 'center',

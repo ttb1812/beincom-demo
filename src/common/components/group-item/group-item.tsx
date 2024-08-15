@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet } from 'react-native';
 import React, { memo, useCallback, useMemo } from 'react';
-import { ITheme, scaledSize, useAppTheme } from '../../utils';
+import { ITheme, scaledSize, translate, useAppTheme } from '../../utils';
 import { Box } from '../box';
 import { IconCategory } from '../icon-category';
 import { Text } from '../text';
@@ -28,8 +28,8 @@ const GroupItem = (props: IGroupItemProps) => {
   );
   const dataChart = useMemo(() => {
     return [
-      { value: completedTasks?.length, color: PROGRESS_COLOR },
       { value: data.tasks?.length, color: CURRENT_COLOR },
+      { value: completedTasks?.length, color: PROGRESS_COLOR },
     ];
   }, [
     CURRENT_COLOR,
@@ -50,13 +50,13 @@ const GroupItem = (props: IGroupItemProps) => {
     } else if ((data.tasks as any).length > 1) {
       return (
         <Text variants="body3" color={theme.palette.neutral2}>
-          {(data.tasks as any).length} tasks
+          {translate('tasks', { number: (data.tasks as any).length })}
         </Text>
       );
     } else {
       return (
         <Text variants="body3" color={theme.palette.neutral2}>
-          1 tasks
+          {translate('tasks', { number: (data.tasks as any).length })}
         </Text>
       );
     }
@@ -65,12 +65,9 @@ const GroupItem = (props: IGroupItemProps) => {
     <Pressable onPress={onPress}>
       <Box style={styles.groupItemContainer}>
         <Box rowAlignCenter>
-          <IconCategory
-            icon={theme.icons.calendar}
-            backgroundColor={theme.palette.neutral5}
-          />
+          <IconCategory type={data.iconType} />
           <Box marginLeft={scaledSize.moderateScale(16)}>
-            <Text variants="body1">{data.categoryName}</Text>
+            <Text variants="body1">{translate(data.categoryName)}</Text>
             {_renderNumberOfTask()}
           </Box>
         </Box>
@@ -82,7 +79,7 @@ const GroupItem = (props: IGroupItemProps) => {
             innerCircleColor={theme.palette.neutral6}
             percentTextColor={theme.palette.neutral1}
             variants="caption1"
-            percent={percent}
+            percent={percent.toFixed(0)}
             showPercent={(data?.tasks || [])?.length > 0}
           />
         </Box>

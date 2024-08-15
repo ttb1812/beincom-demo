@@ -1,20 +1,16 @@
 import React, { memo, useMemo } from 'react';
 import { FlatList, Pressable, StyleSheet } from 'react-native';
-import { ITheme, scaledSize, ternaryOperator, useAppTheme } from '../../utils';
+import {
+  ITheme,
+  scaledSize,
+  ternaryOperator,
+  translate,
+  useAppTheme,
+} from '../../utils';
 import { Box } from '../box';
 import { Text } from '../text';
+import { IFilterCarouselProps, IFilterItem } from './types';
 
-export interface IFilterItem {
-  id: string;
-  title: string;
-  key: string;
-}
-
-interface IFilterCarouselProps<T> {
-  filterOption?: T;
-  setFilterOption?: (value: T) => void;
-  filters?: T[];
-}
 const FilterCarousel = (props: IFilterCarouselProps<IFilterItem>) => {
   const { filterOption, setFilterOption, filters } = props;
   const theme = useAppTheme();
@@ -37,7 +33,7 @@ const FilterCarousel = (props: IFilterCarouselProps<IFilterItem>) => {
             )}
             variants="title2"
           >
-            {item.title}
+            {translate(item.title)}
           </Text>
         </Box>
       </Pressable>

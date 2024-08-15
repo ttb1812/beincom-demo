@@ -9,22 +9,7 @@ import { scaledSize } from '../../../utils';
 import { Box } from '../../box';
 import DrawerHeader from './drawer-header';
 import DrawerItem from './drawer-item';
-
-export interface IItemList {
-  id?: string;
-  title: string;
-  subTitle?: string;
-  isSelected?: boolean;
-}
-
-interface ISingleDrawerProps<ItemT> {
-  visible?: boolean;
-  onClose?: () => void;
-  title?: string;
-  data: ItemT[];
-  onSelect?: (item?: ItemT) => void;
-  itemSelected?: ItemT;
-}
+import { IItemList, ISingleDrawerProps } from '../types';
 
 const SingleDrawer = (props: ISingleDrawerProps<IItemList>) => {
   const { visible, onClose, title, data, onSelect, itemSelected } = props;

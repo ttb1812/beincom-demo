@@ -6,7 +6,7 @@ import {
 import React, { memo, useCallback, useMemo } from 'react';
 import { Box } from '../box';
 import { Text } from '../text';
-import { ITheme, scaledSize, useAppTheme } from '../../utils';
+import { ITheme, scaledSize, translate, useAppTheme } from '../../utils';
 import Color from 'color';
 
 interface ITextInputProps extends TextInputProps {
@@ -36,7 +36,7 @@ const TextInput = (props: ITextInputProps) => {
     getInputOutlineStyle();
     return (
       <RNTextInput
-        placeholder="Do something..."
+        placeholder={translate('dosomething')}
         value={value}
         onChangeText={onChangeText}
         style={[theme.styles.body3, styles.textInput]}

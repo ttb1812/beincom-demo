@@ -1,7 +1,12 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import { Box, GroupItem, Text } from '../../../common/components';
-import { ITheme, scaledSize, useAppTheme } from '../../../common/utils';
+import {
+  ITheme,
+  scaledSize,
+  translate,
+  useAppTheme,
+} from '../../../common/utils';
 import { useSelector } from 'react-redux';
 import { getCategories } from '../../manage-category/manage-category-slice';
 
@@ -28,7 +33,7 @@ const TaskGroups = (props: ITaskGroupsProps) => {
   const _renderTitle = useCallback(() => {
     return (
       <Box style={styles.titleContainer}>
-        <Text variants="title2">Task Groups</Text>
+        <Text variants="title2">{translate('home.taskGroups')}</Text>
         {_renderBadge()}
       </Box>
     );

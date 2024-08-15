@@ -8,17 +8,17 @@ import {
   IconButton,
   PopupManager,
 } from '../../common/components';
-import { scaledSize, useAppTheme } from '../../common/utils';
+import { scaledSize, useAppTheme, translate } from '../../common/utils';
 import { TaskGroups, TodayTask } from './components';
 
 const HomeScreen = () => {
   const theme = useAppTheme();
   const featureDevelop = () => {
     PopupManager.instance?.show({
-      title: 'Feature development!',
+      title: translate('featureDevelopmemt'),
       message: '',
       confirmButton: {
-        text: 'Ok',
+        text: translate('ok'),
       },
     });
   };
@@ -30,7 +30,7 @@ const HomeScreen = () => {
       style={styles.container}
       headerComponent={Header}
       headerProps={{
-        title: 'Home',
+        title: translate('home.title'),
         showBackButton: false,
         rightButtonComponent: (
           <IconButton

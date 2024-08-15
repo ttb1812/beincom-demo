@@ -19,6 +19,7 @@ import {
   scaledSize,
   ScreenName,
   ternaryOperator,
+  translate,
 } from '../../common/utils';
 import {
   CategoriesAction,
@@ -33,7 +34,7 @@ const AddTaskScreen = () => {
   const formattedCategories = categories.map(item => {
     return {
       id: item.id,
-      title: item.categoryName,
+      title: translate(item.categoryName),
       subTitle: item.iconType,
     };
   }) as IItemList[];
@@ -86,14 +87,15 @@ const AddTaskScreen = () => {
       style={styles.container}
       headerComponent={Header}
       headerProps={{
-        title: 'Add Task',
+        title: translate('addTask.title'),
       }}
     >
       <Content scrollEnabled>
         <SelectionGroup
-          title="Category"
+          title={translate('addTask.category')}
           onPress={onOpen}
           subTitle={categorySelected.title}
+          iconType={categorySelected.subTitle || ''}
         />
         <Box paddingTop={PADDING_TOP}>
           <TextInput
@@ -102,7 +104,7 @@ const AddTaskScreen = () => {
               'error',
               'normal',
             )}
-            title="Task Name"
+            title={translate('addTask.taskName')}
             value={task.taskName}
             onChangeText={text => {
               setTask({ ...task, taskName: text });
@@ -116,7 +118,7 @@ const AddTaskScreen = () => {
               'error',
               'normal',
             )}
-            title="Description"
+            title={translate('addTask.description')}
             multiline
             value={task.description}
             onChangeText={text => {
@@ -126,7 +128,7 @@ const AddTaskScreen = () => {
         </Box>
         <Box paddingTop={PADDING_TOP}>
           <DatePicker
-            title="Start Date"
+            title={translate('addTask.startDate')}
             onDateChange={date => {
               setTask({
                 ...task,
@@ -137,7 +139,7 @@ const AddTaskScreen = () => {
         </Box>
         <Box paddingTop={PADDING_TOP}>
           <DatePicker
-            title="End Date"
+            title={translate('addTask.endDate')}
             onDateChange={date => {
               setTask({ ...task, endDate: moment(date).toString() });
             }}
@@ -145,12 +147,12 @@ const AddTaskScreen = () => {
         </Box>
 
         <Box paddingTop={PADDING_TOP}>
-          <Button text="Add" onPress={handlePressAdd} />
+          <Button text={translate('add')} onPress={handlePressAdd} />
         </Box>
       </Content>
 
       <Drawer.SingleDrawer
-        title="Categories"
+        title={translate('addTask.categories')}
         data={formattedCategories}
         visible={categoriesModalVisible}
         itemSelected={categorySelected}

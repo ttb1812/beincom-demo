@@ -1,6 +1,5 @@
 import {
   Canvas,
-  Fit,
   fitbox,
   Group,
   ImageSVG,
@@ -10,15 +9,8 @@ import {
 import React, { memo, useMemo } from 'react';
 import { ViewStyle } from 'react-native';
 import { scaledSize } from '../../utils';
-export interface SvgFromStringProps {
-  svg: string;
-  x?: number;
-  y?: number;
-  width?: number;
-  height?: number;
-  fitType?: Fit;
-  scaling?: boolean;
-}
+import { SvgFromStringProps } from './types';
+
 const SvgFromString = (props: SvgFromStringProps) => {
   const ICON_SIZE = scaledSize.moderateScale(24);
   const {

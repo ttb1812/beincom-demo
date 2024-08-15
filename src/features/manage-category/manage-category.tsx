@@ -1,15 +1,8 @@
 import React, { memo, useCallback, useMemo } from 'react';
-import { FlatList, Pressable, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
-import {
-  Box,
-  Container,
-  Header,
-  IconCategory,
-  PopupManager,
-  Text,
-} from '../../common/components';
-import { ITheme, scaledSize, useAppTheme } from '../../common/utils';
+import { Box, Container, Header, PopupManager } from '../../common/components';
+import { ITheme, scaledSize, translate, useAppTheme } from '../../common/utils';
 import { CategoryItem } from './components';
 import { getCategories } from './manage-category-slice';
 
@@ -19,44 +12,20 @@ const ManageCategoryScreen = () => {
   const categories = useSelector(getCategories);
   const featureDevelop = useCallback(() => {
     PopupManager.instance?.show({
-      title: 'Feature development!',
+      title: translate('featureDevelopmemt'),
       message: '',
       confirmButton: {
-        text: 'Ok',
+        text: translate('ok'),
       },
     });
   }, []);
-  const _renderFooter = useCallback(() => {
-    return (
-      <Pressable onPress={featureDevelop}>
-        <Box style={styles.footer}>
-          <Box>
-            <IconCategory
-              icon={theme.icons.calendar}
-              backgroundColor={theme.palette.neutral5}
-            />
-          </Box>
-          <Box marginLeft={scaledSize.moderateScale(16)}>
-            <Text style={styles.createNewText} variants="body2">
-              Create New
-            </Text>
-          </Box>
-        </Box>
-      </Pressable>
-    );
-  }, [
-    featureDevelop,
-    styles.createNewText,
-    styles.footer,
-    theme.icons.calendar,
-    theme.palette.neutral5,
-  ]);
+
   return (
     <Container
       style={styles.container}
       headerComponent={Header}
       headerProps={{
-        title: 'Manage Categories',
+        title: translate('manageCategories.title'),
         showBackButton: true,
       }}
     >
@@ -70,7 +39,6 @@ const ManageCategoryScreen = () => {
               <CategoryItem data={item} onPressCategoryItem={featureDevelop} />
             );
           }}
-          ListFooterComponent={_renderFooter()}
         />
       </Box>
     </Container>

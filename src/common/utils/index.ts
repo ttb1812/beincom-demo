@@ -7,3 +7,4 @@ export * from './ternary-operation';
 export * from './app-navigator';
 export * from './theme';
 export * from './storage';
+export * from './i18n';

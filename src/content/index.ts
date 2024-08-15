@@ -4,3 +4,4 @@ export * from './styles';
 export * from './types';
 export * from './theme-mode';
 export * from './assets';
+export * from './i18n';

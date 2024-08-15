@@ -4,7 +4,7 @@ import { scaledSize } from '../../../utils';
 import { Box } from '../../box';
 import { CheckBox } from '../../check-box';
 import { Text } from '../../text';
-import { IItemList } from './single-drawer';
+import { IItemList } from '../types';
 
 const DrawerItem = (props: IItemList & { onPress: () => void }) => {
   const { title, isSelected, onPress } = props;

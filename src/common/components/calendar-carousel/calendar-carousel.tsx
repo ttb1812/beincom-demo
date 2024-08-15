@@ -11,11 +11,8 @@ import { ITheme, scaledSize, ternaryOperator, useAppTheme } from '../../utils';
 import { Box } from '../box';
 import { Text } from '../text';
 import { getCalendarCarousel } from '../../../features/calendar/calendar-slice';
+import { ICalendarCarouselProp } from './types';
 
-interface ICalendarCarouselProp {
-  selectedDate: string;
-  setSelectedDate: (date: string) => void;
-}
 const CalendarCarousel = (props: ICalendarCarouselProp) => {
   const today = moment().format('YYYY-MM-DD');
   const { selectedDate = today, setSelectedDate } = props;

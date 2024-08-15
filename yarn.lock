@@ -4864,6 +4864,7 @@ __metadata:
     react-native-modalize: "npm:^2.1.1"
     react-native-safe-area-context: "npm:^4.10.8"
     react-native-screens: "npm:^3.34.0"
+    react-native-splash-screen: "npm:^3.3.0"
     react-native-svg: "npm:^15.5.0"
     react-redux: "npm:^9.1.2"
     react-test-renderer: "npm:18.2.0"
@@ -10021,6 +10022,15 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/568af49a1d79797ebecf5b8c815d44b651b0affdd82d7a8024b9e5e71250a23e108d73562200ef571b806c6a9ebba0484510e710246165dbdc50ad18e4d77619
+  languageName: node
+  linkType: hard
+
+"react-native-splash-screen@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "react-native-splash-screen@npm:3.3.0"
+  peerDependencies:
+    react-native: ">=0.57.0"
+  checksum: 10c0/0979585b4087dba0825c94393477fc0301210cfa09eae4a98336e91865765f3c774cf8b20c525b3cea74c588e1e4ff0aa9d7500292ad52979670aa59ab83f0a4
   languageName: node
   linkType: hard
 

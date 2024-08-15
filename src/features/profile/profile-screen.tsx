@@ -1,7 +1,7 @@
-import React, { memo, useCallback, useMemo, useState } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { FlatList, Platform, StyleSheet } from 'react-native';
 import { Box, Drawer, Section } from '../../common/components';
-import { scaledSize } from '../../common/utils';
+import { scaledSize, translate } from '../../common/utils';
 import { ProfileInformation } from './components';
 import { IMainMenu } from './types';
 import useProfileScreen from './use-profile-screen';
@@ -13,19 +13,15 @@ const ProfileScreen = () => {
     drawerLanguageVisible,
     setDrawerLanguageVisible,
     featureDevelop,
+    formattedLanguage,
+    handleSelectedLangue,
   } = useProfileScreen();
   const styles = useMemo(() => makeStyles(), []);
-
-  const LANGUAGE = [
-    { title: 'English', isSselected: true },
-    { title: 'Tiếng Việt', isSelected: false },
-  ];
-  const [test, setTest] = useState(LANGUAGE[0]);
 
   const _renderItem = useCallback(
     (data: IMainMenu) => {
       return (
-        <Section.Container title={data.sectionName}>
+        <Section.Container title={translate(data.sectionName)}>
           <FlatList
             data={data.item}
             keyExtractor={item => item.key}
@@ -34,8 +30,8 @@ const ProfileScreen = () => {
                 <Section.Item
                   key={item.key}
                   icon={item.icon}
-                  title={item.title}
-                  subTitle={item.subTitle}
+                  title={translate(item.title || '')}
+                  subTitle={item.subTitle && translate(item.subTitle)}
                   showIconRight={item?.showIconRight}
                   onPress={() => onPressItem(item.key)}
                 />
@@ -75,11 +71,11 @@ const ProfileScreen = () => {
         />
       </Box>
       <Drawer.SingleDrawer
-        title="Language"
-        data={LANGUAGE}
+        title={translate('profile.language')}
+        data={formattedLanguage}
         visible={drawerLanguageVisible}
-        itemSelected={test}
-        onSelect={item => setTest(item as any)}
+        // itemSelected={language}
+        onSelect={item => handleSelectedLangue(item as any)}
         onClose={() => {
           setDrawerLanguageVisible(false);
         }}

@@ -1,14 +1,7 @@
 import { Checkbox as NBCheckBox } from 'native-base';
 import React, { memo } from 'react';
 import { Pressable } from 'react-native';
-
-interface ICheckBoxProps {
-  isChecked?: boolean;
-  indeterminate?: boolean;
-  onToggle?: () => void;
-  underlayColor?: string;
-  uncheckedColor?: string;
-}
+import { ICheckBoxProps } from './types';
 
 const CheckBox = (props: ICheckBoxProps) => {
   const { onToggle, isChecked = true } = props;

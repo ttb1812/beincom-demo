@@ -1,7 +1,7 @@
 import { StyleSheet, Pressable } from 'react-native';
 import React, { memo, useMemo } from 'react';
 import { Box, Image, SvgFromString, Text } from '../../../common/components';
-import { scaledSize, useAppTheme } from '../../../common/utils';
+import { scaledSize, translate, useAppTheme } from '../../../common/utils';
 
 const AVATAR_SIZE = scaledSize.moderateScale(70);
 const ICON_SIZE = scaledSize.moderateScale(24);
@@ -25,7 +25,7 @@ const ProfileInformation = (props: IProfileInformationProps) => {
           justifyContent="space-between"
         >
           <Box>
-            <Text variants="body2">Sign in or Sign up</Text>
+            <Text variants="body2">{translate('profile.signInOrSignUp')}</Text>
           </Box>
           <SvgFromString
             svg={theme.icons.arrowRightBold}

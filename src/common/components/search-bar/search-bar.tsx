@@ -7,7 +7,7 @@ import {
   TextInput,
   TouchableHighlight,
 } from 'react-native';
-import { ITheme, scaledSize, useAppTheme } from '../../utils';
+import { ITheme, scaledSize, translate, useAppTheme } from '../../utils';
 import { Box } from '../box';
 import { SvgFromString } from '../svg-from-string';
 import { Text } from '../text';
@@ -104,7 +104,7 @@ const SearchBar = () => {
             <TextInput
               ref={textInputRef}
               onFocus={onFocus}
-              placeholder="Search..."
+              placeholder={translate('search')}
               onBlur={onBlur}
               onChangeText={onChangeSearch}
               value={searchQuery}
@@ -126,7 +126,7 @@ const SearchBar = () => {
             variants="body2"
             style={styles.cancelText}
           >
-            Cancel
+            {translate('cancel')}
           </Text>
         </Animated.View>
       </Pressable>

@@ -3,20 +3,22 @@ import { IStartupState } from './types';
 
 const initialState: IStartupState = {
   language: [
-    { title: 'English', isSselected: true },
-    { title: 'Tiếng Việt', isSelected: false },
+    { title: 'English', isSelected: true, code: 'en' },
+    { title: 'Tiếng Việt', isSelected: false, code: 'vi' },
   ],
 };
 
 export const startUpReducerName = 'startUp';
 
 export class StartUpAction {
-  static setLanguage = createAction<any>(startUpReducerName + '/setLanguage');
+  static setLanguage = createAction<{ language: any[] }>(
+    startUpReducerName + '/setLanguage',
+  );
 }
 
 export const startUpReducer = createReducer(initialState, builder => {
-  builder.addCase(StartUpAction.setLanguage, state => {
-    return { ...state, language: [] };
+  builder.addCase(StartUpAction.setLanguage, (state, { payload }) => {
+    return { ...state, language: payload.language };
   });
 });
 

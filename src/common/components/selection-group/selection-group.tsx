@@ -4,15 +4,17 @@ import { ITheme, scaledSize, useAppTheme } from '../../utils';
 import { Box } from '../box';
 import { SvgFromString } from '../svg-from-string';
 import { Text } from '../text';
+import { IconCategory } from '../icon-category';
 
 interface ISelectionGroupProps {
   title?: string;
   onPress?: () => void;
   subTitle?: string;
+  iconType: string;
 }
 
 const SelectionGroup = (props: ISelectionGroupProps) => {
-  const { title, onPress, subTitle } = props;
+  const { title, onPress, subTitle, iconType } = props;
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(theme), [theme]);
   const ICON_SIZE = scaledSize.moderateScale(24);
@@ -21,11 +23,7 @@ const SelectionGroup = (props: ISelectionGroupProps) => {
     <>
       <Pressable style={styles.container} onPress={onPress}>
         <Box rowAlignCenter>
-          <SvgFromString
-            svg={theme.icons.calendarPicker}
-            width={ICON_SIZE}
-            height={ICON_SIZE}
-          />
+          <IconCategory type={iconType} />
           <Box marginLeft={scaledSize.moderateScale(12)}>
             <Text variants="caption2" style={styles.title}>
               {title}

@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { memo, useCallback, useMemo } from 'react';
-import { ScreenName } from '../../../../common/utils';
+import { ScreenName, translate } from '../../../../common/utils';
 import { CalendarScreen } from '../../../calendar';
 import { HomeScreen } from '../../../home';
 import { ProfileScreen } from '../../../profile';
@@ -13,11 +13,11 @@ const Tab = createBottomTabNavigator();
 const TABS = [
   {
     key: ScreenName.homeScreen,
-    textTranslate: 'Home',
+    textTranslate: 'bottomTab.home',
   },
   {
     key: ScreenName.calendarScreen,
-    textTranslate: 'Calendar',
+    textTranslate: 'bottomTab.calendar',
   },
   {
     key: ScreenName.addTaskBtn,
@@ -25,11 +25,11 @@ const TABS = [
   },
   {
     key: ScreenName.tasksScreen,
-    textTranslate: 'Tasks',
+    textTranslate: 'bottomTab.tasks',
   },
   {
     key: ScreenName.profileScreen,
-    textTranslate: 'Profile',
+    textTranslate: 'bottomTab.profile',
   },
 ];
 
@@ -53,7 +53,7 @@ const BottomTabNavigator = () => {
         name: tabItem.key,
         options: {
           headerShown: false,
-          title: tabItem.textTranslate,
+          title: translate(tabItem.textTranslate),
         },
         component: getComponent(tabItem.key),
         tabProps: tabItem,

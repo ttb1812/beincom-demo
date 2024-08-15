@@ -20,7 +20,8 @@ const AppStartup = () => {
   const theme = extendTheme({
     ...withTheme('light'),
   });
-  useStartUp();
+  const { isReadyRenderUI } = useStartUp();
+
   useEffect(() => {
     if (Platform.OS === 'android') {
       StatusBar.setTranslucent(true);
@@ -28,6 +29,10 @@ const AppStartup = () => {
       StatusBar.setBackgroundColor('transparent');
     }
   }, []);
+
+  if (!isReadyRenderUI) {
+    return null;
+  }
   return (
     <NativeBaseProvider theme={theme}>
       <PortalProvider>

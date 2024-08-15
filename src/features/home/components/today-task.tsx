@@ -6,6 +6,7 @@ import {
   NavigationService,
   scaledSize,
   ScreenName,
+  translate,
   useAppTheme,
 } from '../../../common/utils';
 
@@ -20,7 +21,7 @@ const TodayTask = () => {
         onPress={() => NavigationService.navigate(ScreenName.calendarScreen)}
       >
         <Text variants="caption1" color={theme.palette.primary1}>
-          View Task
+          {translate('home.viewTask')}
         </Text>
       </Pressable>
     );
@@ -50,7 +51,7 @@ const TodayTask = () => {
       <Box flex={4} justifyContent="space-between">
         <Box>
           <Text style={styles.label} variants="body3">
-            Your today's task almost done!
+            {translate('home.yourTodayTaskAlmostDone')}
           </Text>
         </Box>
         <Box>{_renderViewTaskBtn()}</Box>

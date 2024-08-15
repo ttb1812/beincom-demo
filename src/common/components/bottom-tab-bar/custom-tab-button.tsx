@@ -9,14 +9,7 @@ import {
   useAppTheme,
 } from '../../utils';
 import { SvgFromString } from '../svg-from-string';
-
-interface ICustomTabButtonProps {
-  onPress?: () => void;
-  onLongPress?: () => void;
-  label?: string;
-  isFocused: boolean;
-  routeName?: string;
-}
+import { ICustomTabButtonProps } from './types';
 
 const CustomTabButton = (props: ICustomTabButtonProps) => {
   const { onPress, onLongPress, label, isFocused, routeName } = props;

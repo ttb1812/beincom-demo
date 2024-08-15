@@ -5,11 +5,7 @@ import { Box } from '../box';
 import { Text } from '../text';
 import SvgFromString from '../svg-from-string/svg-from-string';
 import RNDatePicker from 'react-native-date-picker';
-
-interface IDatePickerProps {
-  title?: string;
-  onDateChange?: (date: Date) => void;
-}
+import { IDatePickerProps } from './types';
 
 const DatePicker = (props: IDatePickerProps) => {
   const { title, onDateChange } = props;

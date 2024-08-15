@@ -49,27 +49,27 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = beincomDemo/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = beincomDemo/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-beincomDemo-beincomDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-beincomDemo-beincomDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2046961F1A2149DFAA55E65D /* LexendDeca-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Light.ttf"; path = "../src/content/assets/fonts/LexendDeca-Light.ttf"; sourceTree = "<group>"; };
+		2046961F1A2149DFAA55E65D /* LexendDeca-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Light.ttf"; path = "../src/content/assets/fonts/LexendDeca-Light.ttf"; sourceTree = "<group>"; };
 		221F0F21506028185D70ED2C /* Pods-beincomDemo.debugstaging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo.debugstaging.xcconfig"; path = "Target Support Files/Pods-beincomDemo/Pods-beincomDemo.debugstaging.xcconfig"; sourceTree = "<group>"; };
 		28F3B3D9938DC1D2651ED4D9 /* Pods-beincomDemo.releasedev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo.releasedev.xcconfig"; path = "Target Support Files/Pods-beincomDemo/Pods-beincomDemo.releasedev.xcconfig"; sourceTree = "<group>"; };
-		32EC814B0BE4420695293B9B /* LexendDeca-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-ExtraLight.ttf"; path = "../src/content/assets/fonts/LexendDeca-ExtraLight.ttf"; sourceTree = "<group>"; };
-		3524C42D0FFE42ABAFA3CB3C /* LexendDeca-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Thin.ttf"; path = "../src/content/assets/fonts/LexendDeca-Thin.ttf"; sourceTree = "<group>"; };
+		32EC814B0BE4420695293B9B /* LexendDeca-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-ExtraLight.ttf"; path = "../src/content/assets/fonts/LexendDeca-ExtraLight.ttf"; sourceTree = "<group>"; };
+		3524C42D0FFE42ABAFA3CB3C /* LexendDeca-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Thin.ttf"; path = "../src/content/assets/fonts/LexendDeca-Thin.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-beincomDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo.debug.xcconfig"; path = "Target Support Files/Pods-beincomDemo/Pods-beincomDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		53D9DC22E249AD7E7A3C826C /* Pods-beincomDemo-beincomDemoTests.debugdev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo-beincomDemoTests.debugdev.xcconfig"; path = "Target Support Files/Pods-beincomDemo-beincomDemoTests/Pods-beincomDemo-beincomDemoTests.debugdev.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-beincomDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo.release.xcconfig"; path = "Target Support Files/Pods-beincomDemo/Pods-beincomDemo.release.xcconfig"; sourceTree = "<group>"; };
-		573922E294DA4B768EED9ED8 /* LexendDeca-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-SemiBold.ttf"; path = "../src/content/assets/fonts/LexendDeca-SemiBold.ttf"; sourceTree = "<group>"; };
+		573922E294DA4B768EED9ED8 /* LexendDeca-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-SemiBold.ttf"; path = "../src/content/assets/fonts/LexendDeca-SemiBold.ttf"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-beincomDemo-beincomDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo-beincomDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-beincomDemo-beincomDemoTests/Pods-beincomDemo-beincomDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-beincomDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-beincomDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		66E0C72453304A96955FEF48 /* LexendDeca-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Bold.ttf"; path = "../src/content/assets/fonts/LexendDeca-Bold.ttf"; sourceTree = "<group>"; };
-		678B8C1304AD427BBB695FC5 /* LexendDeca-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Medium.ttf"; path = "../src/content/assets/fonts/LexendDeca-Medium.ttf"; sourceTree = "<group>"; };
+		66E0C72453304A96955FEF48 /* LexendDeca-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Bold.ttf"; path = "../src/content/assets/fonts/LexendDeca-Bold.ttf"; sourceTree = "<group>"; };
+		678B8C1304AD427BBB695FC5 /* LexendDeca-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Medium.ttf"; path = "../src/content/assets/fonts/LexendDeca-Medium.ttf"; sourceTree = "<group>"; };
 		680E0B30ECA798D90CA753A3 /* Pods-beincomDemo.releasestaging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo.releasestaging.xcconfig"; path = "Target Support Files/Pods-beincomDemo/Pods-beincomDemo.releasestaging.xcconfig"; sourceTree = "<group>"; };
-		6EC1D85207A049AF82F486A7 /* LexendDeca-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Regular.ttf"; path = "../src/content/assets/fonts/LexendDeca-Regular.ttf"; sourceTree = "<group>"; };
+		6EC1D85207A049AF82F486A7 /* LexendDeca-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Regular.ttf"; path = "../src/content/assets/fonts/LexendDeca-Regular.ttf"; sourceTree = "<group>"; };
 		708214BA2D891941CB1F81E1 /* Pods-beincomDemo-beincomDemoTests.debugstaging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo-beincomDemoTests.debugstaging.xcconfig"; path = "Target Support Files/Pods-beincomDemo-beincomDemoTests/Pods-beincomDemo-beincomDemoTests.debugstaging.xcconfig"; sourceTree = "<group>"; };
 		7CBFCD5F06E82BA0837E9112 /* Pods-beincomDemo-beincomDemoTests.releasedev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo-beincomDemoTests.releasedev.xcconfig"; path = "Target Support Files/Pods-beincomDemo-beincomDemoTests/Pods-beincomDemo-beincomDemoTests.releasedev.xcconfig"; sourceTree = "<group>"; };
 		8045E0556B3961AEA9157698 /* Pods-beincomDemo-beincomDemoTests.releasestaging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo-beincomDemoTests.releasestaging.xcconfig"; path = "Target Support Files/Pods-beincomDemo-beincomDemoTests/Pods-beincomDemo-beincomDemoTests.releasestaging.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = beincomDemo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-beincomDemo-beincomDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo-beincomDemoTests.release.xcconfig"; path = "Target Support Files/Pods-beincomDemo-beincomDemoTests/Pods-beincomDemo-beincomDemoTests.release.xcconfig"; sourceTree = "<group>"; };
-		8B60101667294324A3ACBD2D /* LexendDeca-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Black.ttf"; path = "../src/content/assets/fonts/LexendDeca-Black.ttf"; sourceTree = "<group>"; };
+		8B60101667294324A3ACBD2D /* LexendDeca-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-Black.ttf"; path = "../src/content/assets/fonts/LexendDeca-Black.ttf"; sourceTree = "<group>"; };
 		916DB333D6856C4F6C22CBCA /* Pods-beincomDemo.releasepro.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo.releasepro.xcconfig"; path = "Target Support Files/Pods-beincomDemo/Pods-beincomDemo.releasepro.xcconfig"; sourceTree = "<group>"; };
 		A61F6091DBFEAA349A30CE2D /* Pods-beincomDemo-beincomDemoTests.releasepro.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo-beincomDemoTests.releasepro.xcconfig"; path = "Target Support Files/Pods-beincomDemo-beincomDemoTests/Pods-beincomDemo-beincomDemoTests.releasepro.xcconfig"; sourceTree = "<group>"; };
 		B2D785B2F44942605AD93D46 /* Pods-beincomDemo.debugdev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo.debugdev.xcconfig"; path = "Target Support Files/Pods-beincomDemo/Pods-beincomDemo.debugdev.xcconfig"; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		CC860DFE2C667F5D00C5CB3E /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E94580FB6C1783373457D7C6 /* Pods-beincomDemo.debugpro.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beincomDemo.debugpro.xcconfig"; path = "Target Support Files/Pods-beincomDemo/Pods-beincomDemo.debugpro.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F3C08D786DCD4144A2C4603E /* LexendDeca-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-ExtraBold.ttf"; path = "../src/content/assets/fonts/LexendDeca-ExtraBold.ttf"; sourceTree = "<group>"; };
+		F3C08D786DCD4144A2C4603E /* LexendDeca-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "LexendDeca-ExtraBold.ttf"; path = "../src/content/assets/fonts/LexendDeca-ExtraBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +156,6 @@
 				3524C42D0FFE42ABAFA3CB3C /* LexendDeca-Thin.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -276,7 +275,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "beincomDemo" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "BeincomDemo" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1312,7 +1311,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = ReleaseDev;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "beincomDemo" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "BeincomDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CCC86B822C6673D700D3CD3E /* DebugDev */,

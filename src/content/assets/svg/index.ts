@@ -29,6 +29,10 @@ import { more } from './more';
 import { search } from './search';
 import { searchBold } from './search-bold';
 import { cancelCircle } from './cancel-circle';
+import { jobs } from './jobs';
+import { favorite } from './favorite';
+import { birthday } from './birthday';
+import { personal } from './personal';
 export const icons = {
   home,
   calendar,
@@ -61,4 +65,8 @@ export const icons = {
   search,
   searchBold,
   cancelCircle,
+  jobs,
+  favorite,
+  birthday,
+  personal,
 } as const;

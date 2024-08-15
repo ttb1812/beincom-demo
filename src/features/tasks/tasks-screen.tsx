@@ -10,7 +10,7 @@ import {
   PopupManager,
   SearchBar,
 } from '../../common/components';
-import { scaledSize, useAppTheme } from '../../common/utils';
+import { scaledSize, translate, useAppTheme } from '../../common/utils';
 import { getCategories } from '../manage-category/manage-category-slice';
 
 const TasksScreen = () => {
@@ -18,10 +18,10 @@ const TasksScreen = () => {
   const categories = useSelector(getCategories);
   const featureDevelop = () => {
     PopupManager.instance?.show({
-      title: 'Feature development!',
+      title: translate('featureDevelopmemt'),
       message: '',
       confirmButton: {
-        text: 'Ok',
+        text: translate('ok'),
       },
     });
   };
@@ -29,7 +29,7 @@ const TasksScreen = () => {
     <Container
       headerComponent={Header}
       headerProps={{
-        title: 'Tasks',
+        title: translate('tasks.title'),
         showBackButton: false,
         rightButtonComponent: (
           <IconButton

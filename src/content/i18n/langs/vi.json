@@ -1,0 +1,71 @@
+{
+  "common": {
+    "add": "Thêm",
+    "ok": "Ok",
+    "featureDevelopmemt": "Tính năng đang phát triển!",
+    "tasks": "{{number}} nhiệm vụ",
+    "task": "{{number}} nhiệm vụ",
+    "jobs": "Công việc",
+    "personal": "Cá nhân",
+    "favorite": "Danh sách yêu thích",
+    "birthday": "Ngày sinh nhật",
+    "all": "Tất cả",
+    "todo": " Để làm",
+    "completed": "Hoàn thành",
+    "search": "Tìm kiếm...",
+    "cancel": "Hủy",
+    "dosomething": "Làm điều gì đó..."
+  },
+  "application": {
+    "home": {
+      "title": "Trang chủ",
+      "viewTask": "Xem nhiệm vụ",
+      "yourTodayTaskAlmostDone": "Nhiệm vụ hôm nay của bạn gần như đã hoàn thành!",
+      "taskGroups": "Nhóm nhiệm vụ"
+    },
+    "calendar": {
+      "title": "Lịch",
+      "todayTasks": "Nhiệm vụ hôm nay"
+    },
+    "addTask": {
+      "title": "Thêm nhiệm vụ",
+      "taskName": "Nhiệm vụ",
+      "description": "Tóm tắt",
+      "startDate": "Ngày bắt đầu",
+      "endDate": "Ngày kết thúc",
+      "categories": "Thể loại",
+      "category": "Loại"
+    },
+    "tasks": {
+      "title": "Nhiệm vụ"
+    },
+    "profile": {
+      "title": "Hồ sơ",
+      "customize": "Tùy chỉnh",
+      "sync": "Đồng bộ hóa",
+      "theme": "Chủ đề",
+      "category": "Loại",
+      "language": "Ngôn ngữ",
+      "dateTime": "Ngày & Giờ",
+      "firstDateOfWeek": "Ngày đầu tiên trong tuần",
+      "default": "Mặc định",
+      "timeFormat": "Định dạng thời gian",
+      "dateFormat": "Định dạng ngày",
+      "dueDate": "Ngày đến hạn",
+      "helpFeedback": "Trợ giúp & Phản hồi",
+      "about": "Về",
+      "shareApp": "Chia sẻ ứng dụng",
+      "signInOrSignUp": "Đăng nhập/Đăng ký"
+    },
+    "bottomTab": {
+      "home": "Trang chủ",
+      "calendar": "Lịch",
+      "tasks": "Nhiệm vụ",
+      "profile": "Hồ sơ"
+    },
+    "manageCategories": {
+      "title": "Quản lý danh mục",
+      "createNewCategory": "Tạo mớis"
+    }
+  }
+}

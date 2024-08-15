@@ -6,12 +6,8 @@ import { Box } from '../box';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { CalendarAction } from '../../../features/calendar/calendar-slice';
-interface ICalendarWidgetProps {
-  selectedDate: string;
-  setSelectedDate: (date: string) => void;
-  monthSelected: string;
-  setMonthSelected: (date: string) => void;
-}
+import { ICalendarWidgetProps } from './types';
+
 const CalendarWidget = (props: ICalendarWidgetProps) => {
   const today = moment().format('YYYY-MM-DD');
   const {
@@ -73,15 +69,13 @@ const CalendarWidget = (props: ICalendarWidgetProps) => {
           arrowColor: theme.palette.primary1,
           textMonthFontWeight: '600',
         }}
-        // onDayPress={(day: any) => {
-        //   setSelectedDate(day.dateString);
-        // }}
         onDayPress={handleOnDayPress}
         onMonthChange={(month: any) => {
           setMonthSelected(month.dateString);
         }}
         markedDates={parserMarkedDates}
         initialDate={monthSelected}
+        showSixWeeks={false}
       />
     </Box>
   );

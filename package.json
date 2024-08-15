@@ -11,7 +11,8 @@
     "ios-pro": "ENVFILE=.env.pro react-native run-ios --scheme BeincomDemoPro --simulator=\"iPhone 15 Pro Max\"",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "build-android:dev": "ENVFILE=.env ./scripts/build-apk.sh"
   },
   "dependencies": {
     "@gorhom/portal": "^1.0.14",

@@ -1,12 +1,12 @@
+import { PortalProvider } from '@gorhom/portal';
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, extendTheme } from 'native-base';
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
+import { GlobalPopupID, PopupProvider } from '../../../common/components';
+import { useNotification, useStatusBar } from '../../../common/hooks';
 import { navigationRef, withTheme } from '../../../common/utils';
 import { AuthGuard } from '../../auth';
-import { Platform, StatusBar } from 'react-native';
-import { PortalProvider } from '@gorhom/portal';
 import useStartUp from '../use-start-up';
-import { GlobalPopupID, PopupProvider } from '../../../common/components';
 
 const ApplicationNavigator = memo(() => {
   return (
@@ -22,13 +22,8 @@ const AppStartup = () => {
   });
   const { isReadyRenderUI } = useStartUp();
 
-  useEffect(() => {
-    if (Platform.OS === 'android') {
-      StatusBar.setTranslucent(true);
-      StatusBar.setBarStyle('dark-content');
-      StatusBar.setBackgroundColor('transparent');
-    }
-  }, []);
+  useNotification();
+  useStatusBar();
 
   if (!isReadyRenderUI) {
     return null;

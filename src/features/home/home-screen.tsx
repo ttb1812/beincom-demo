@@ -1,18 +1,13 @@
 import React, { memo, useCallback } from 'react';
-import { StyleSheet } from 'react-native';
-import {
-  Box,
-  Container,
-  Content,
-  Header,
-  IconButton,
-  PopupManager,
-} from '../../common/components';
-import { scaledSize, useAppTheme, translate } from '../../common/utils';
+import { Animated, StyleSheet } from 'react-native';
+import { getBottomSpace } from 'react-native-iphone-screen-helper';
+import { Box, Header, IconButton, PopupManager } from '../../common/components';
+import { scaledSize, translate, useAppTheme } from '../../common/utils';
 import { TaskGroups, TodayTask } from './components';
 
 const HomeScreen = () => {
   const theme = useAppTheme();
+
   const featureDevelop = () => {
     PopupManager.instance?.show({
       title: translate('featureDevelopmemt'),
@@ -22,30 +17,33 @@ const HomeScreen = () => {
       },
     });
   };
+
   const _renderBottomSpace = useCallback(() => {
     return <Box style={styles.bottomSpace} />;
   }, []);
+
   return (
-    <Container
-      style={styles.container}
-      headerComponent={Header}
-      headerProps={{
-        title: translate('home.title'),
-        showBackButton: false,
-        rightButtonComponent: (
+    <>
+      <Header
+        title={translate('home.title')}
+        showBackButton={false}
+        rightButtonComponent={
           <IconButton
             svg={theme.icons.notificationBold}
             onPress={featureDevelop}
           />
-        ),
-      }}
-    >
-      <Content contentContainerStyle={styles.content} scrollEnabled>
+        }
+      />
+      <Animated.ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.animatedContainer}
+        scrollEventThrottle={16}
+      >
         <TodayTask />
         <TaskGroups onPressGroupItem={featureDevelop} />
         {_renderBottomSpace()}
-      </Content>
-    </Container>
+      </Animated.ScrollView>
+    </>
   );
 };
 
@@ -61,6 +59,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
   },
   bottomSpace: {
-    height: scaledSize.verticalScale(100),
+    height: getBottomSpace() || scaledSize.moderateScale(22),
+  },
+  animatedContainer: {
+    width: scaledSize.deviceWidth,
   },
 });

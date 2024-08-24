@@ -1,16 +1,13 @@
-import { Platform, StyleSheet, ViewProps } from 'react-native';
-import React, { memo, useCallback, useMemo } from 'react';
-import { Box } from '../box';
-import {
-  NavigationService,
-  scaledSize,
-  ternaryOperator,
-  useAppTheme,
-} from '../../utils';
-import { Text } from '../text';
+import React, { useCallback, useMemo } from 'react';
+import { StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { IHeaderProps } from './types';
+import { NavigationService, scaledSize, useAppTheme } from '../../utils';
+import { Box } from '../box';
 import { IconButton } from '../icon-button';
+import { Text } from '../text';
+import { IHeaderProps } from './types';
+
+const CONTENT_HEADER_HEIGHT = scaledSize.verticalScale(50);
 
 const Header = (props: IHeaderProps) => {
   const {
@@ -19,14 +16,10 @@ const Header = (props: IHeaderProps) => {
     onBackButtonPress,
     rightButtonComponent,
   } = props;
-  const theme = useAppTheme();
   const insets = useSafeAreaInsets();
+  const theme = useAppTheme();
+  const HEADER_HEIGHT = insets.top + CONTENT_HEADER_HEIGHT;
   const styles = useMemo(() => makeStyles(), []);
-  const insetTop = useMemo(() => {
-    return {
-      paddingTop: ternaryOperator(Platform.OS === 'android', 0, insets.top),
-    };
-  }, [insets.top]) as ViewProps;
 
   const _onBackButtonPress = useCallback(() => {
     if (onBackButtonPress) {
@@ -66,8 +59,8 @@ const Header = (props: IHeaderProps) => {
   }, [rightButtonComponent]);
 
   return (
-    <Box style={[styles.container, insetTop]}>
-      <Box rowAlignCenter style={styles.content}>
+    <Box style={[styles.container, { height: HEADER_HEIGHT }]}>
+      <Box style={[styles.content, { top: insets.top }]}>
         {_renderLeftBtn()}
         {_renderTitle()}
         {_renderRightBtn()}
@@ -76,17 +69,17 @@ const Header = (props: IHeaderProps) => {
   );
 };
 
-export default memo(Header);
+export default Header;
 
 const makeStyles = () =>
   StyleSheet.create({
     container: {
-      width: scaledSize.deviceWidth,
       paddingHorizontal: scaledSize.moderateScale(11),
-      paddingBottom: scaledSize.moderateScale(6),
     },
     content: {
-      minHeight: scaledSize.moderateScale(24),
+      height: CONTENT_HEADER_HEIGHT,
       justifyContent: 'space-between',
+      alignItems: 'center',
+      flexDirection: 'row',
     },
   });

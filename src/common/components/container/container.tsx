@@ -20,7 +20,6 @@ const Container = (props: IContainerProps) => {
   const insets = useSafeAreaInsets();
   const insetStyle = useMemo(
     () => ({
-      paddingTop: ternaryOperator(Platform.OS === 'android', insets.top, 0),
       height: ternaryOperator(
         Platform.OS === 'android',
         insets.top + scaledSize.deviceHeight,

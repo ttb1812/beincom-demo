@@ -106,7 +106,7 @@ export class ScaledSize {
     if (!this._eventSubscription) {
       this._eventSubscription = Dimensions.addEventListener(
         'change',
-        ({screen}) => {
+        ({ screen }) => {
           if (screen.height > screen.width) {
             this._orientation = 'portrait';
           } else {

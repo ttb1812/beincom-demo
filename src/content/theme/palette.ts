@@ -5,6 +5,7 @@ export const palette = {
   primary4: '#D295FF',
   primary5: '#F8B7FF',
   primary6: '#B5A0F3',
+  primary7: '#EDE8FF',
   neutral1: '#343434',
   neutral2: '#898989',
   neutral3: '#989898',

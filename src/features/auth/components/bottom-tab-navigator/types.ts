@@ -25,9 +25,3 @@ export interface IBottomTab {
     | undefined;
   tabProps: TabScreenProps;
 }
-
-export interface TabProps {
-  focused: boolean;
-  color: string;
-  size: number;
-}

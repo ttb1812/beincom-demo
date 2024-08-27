@@ -33,6 +33,7 @@ import { jobs } from './jobs';
 import { favorite } from './favorite';
 import { birthday } from './birthday';
 import { personal } from './personal';
+import { add } from './add';
 export const icons = {
   home,
   calendar,
@@ -69,4 +70,5 @@ export const icons = {
   favorite,
   birthday,
   personal,
+  add,
 } as const;

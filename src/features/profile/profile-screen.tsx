@@ -5,6 +5,7 @@ import { scaledSize, translate } from '../../common/utils';
 import { ProfileInformation } from './components';
 import { IMainMenu } from './types';
 import useProfileScreen from './use-profile-screen';
+import { useCustomBottomTabBar } from '../../common/hooks';
 
 const ProfileScreen = () => {
   const {
@@ -16,6 +17,7 @@ const ProfileScreen = () => {
     formattedLanguage,
     handleSelectedLangue,
   } = useProfileScreen();
+  useCustomBottomTabBar();
   const styles = useMemo(() => makeStyles(), []);
 
   const _renderItem = useCallback(

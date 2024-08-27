@@ -4,9 +4,11 @@ import { getBottomSpace } from 'react-native-iphone-screen-helper';
 import { Box, Header, IconButton, PopupManager } from '../../common/components';
 import { scaledSize, translate, useAppTheme } from '../../common/utils';
 import { TaskGroups, TodayTask } from './components';
+import { useCustomBottomTabBar } from '../../common/hooks';
 
 const HomeScreen = () => {
   const theme = useAppTheme();
+  const { onScroll } = useCustomBottomTabBar();
 
   const featureDevelop = () => {
     PopupManager.instance?.show({
@@ -38,6 +40,7 @@ const HomeScreen = () => {
         showsVerticalScrollIndicator={false}
         style={styles.animatedContainer}
         scrollEventThrottle={16}
+        onScroll={onScroll}
       >
         <TodayTask />
         <TaskGroups onPressGroupItem={featureDevelop} />

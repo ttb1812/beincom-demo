@@ -12,8 +12,10 @@ import {
 } from '../../common/components';
 import { scaledSize, translate, useAppTheme } from '../../common/utils';
 import { getCategories } from '../manage-category/manage-category-slice';
+import { useCustomBottomTabBar } from '../../common/hooks';
 
 const TasksScreen = () => {
+  useCustomBottomTabBar();
   const theme = useAppTheme();
   const categories = useSelector(getCategories);
   const featureDevelop = () => {

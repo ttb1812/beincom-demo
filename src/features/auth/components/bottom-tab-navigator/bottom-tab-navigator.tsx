@@ -1,12 +1,20 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { memo, useCallback, useMemo } from 'react';
-import { ScreenName, translate } from '../../../../common/utils';
+import { useTranslation } from 'react-i18next';
+import { Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { BottomTabBarIcon } from '../../../../common/components';
+import {
+  NavigationService,
+  scaledSize,
+  ScreenName,
+  translate,
+} from '../../../../common/utils';
 import { CalendarScreen } from '../../../calendar';
 import { HomeScreen } from '../../../home';
 import { ProfileScreen } from '../../../profile';
 import { TasksScreen } from '../../../tasks';
 import { IBottomTab } from './types';
-import { BottomTabBar } from '../../../../common/components';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,6 +42,8 @@ const TABS = [
 ];
 
 const BottomTabNavigator = () => {
+  const { i18n } = useTranslation();
+  const insets = useSafeAreaInsets();
   const getComponent = useCallback((key: string) => {
     switch (key) {
       case ScreenName.calendarScreen:
@@ -48,12 +58,20 @@ const BottomTabNavigator = () => {
   }, []);
 
   const tabs = useMemo((): IBottomTab[] => {
-    const formattedTabs: IBottomTab[] = TABS.map(tabItem => {
+    const formattedTabs: IBottomTab[] = TABS.map((tabItem, index) => {
       return {
         name: tabItem.key,
         options: {
           headerShown: false,
           title: translate(tabItem.textTranslate),
+          tabBarIcon: props => (
+            <BottomTabBarIcon
+              key={index}
+              tabKey={tabItem.key}
+              label={translate(tabItem.textTranslate)}
+              tabProps={{ ...props }}
+            />
+          ),
         },
         component: getComponent(tabItem.key),
         tabProps: tabItem,
@@ -64,13 +82,20 @@ const BottomTabNavigator = () => {
 
   return (
     <Tab.Navigator
+      key={i18n.language}
       initialRouteName={ScreenName.homeScreen}
       screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,
+        tabBarShowLabel: false,
       }}
-      tabBar={props => {
-        return <BottomTabBar {...props} />;
+      safeAreaInsets={{
+        bottom:
+          insets.bottom +
+          (Platform.select({
+            ios: scaledSize.moderateScale(8),
+            android: scaledSize.moderateScale(20),
+          }) as number),
       }}
     >
       {tabs?.map(tabItem => {
@@ -80,6 +105,18 @@ const BottomTabNavigator = () => {
             name={tabItem.name}
             key={tabItem.name}
             options={{ ...tabItem.options }}
+            listeners={{
+              tabPress: e => {
+                if (tabItem.name !== ScreenName.addTaskBtn) {
+                  NavigationService.navigate(
+                    tabItem.name as keyof typeof ScreenName,
+                  );
+                } else {
+                  e.preventDefault();
+                  NavigationService.navigate(ScreenName.addTaskScreen);
+                }
+              },
+            }}
           >
             {(tabProps: any) => <TabScreen {...tabProps} />}
           </Tab.Screen>

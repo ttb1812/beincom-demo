@@ -18,6 +18,8 @@ import {
 import { scaledSize, translate, useAppTheme } from '../../common/utils';
 import { TaskItem } from './components';
 import useCalendarScreen from './use-calendar-screen';
+import { useCustomBottomTabBar } from '../../common/hooks';
+import { getBottomSpace } from 'react-native-iphone-screen-helper';
 
 const CalendarScreen = () => {
   const {
@@ -31,6 +33,7 @@ const CalendarScreen = () => {
     filters,
     featureDevelop,
   } = useCalendarScreen();
+  const { onScroll } = useCustomBottomTabBar();
   const theme = useAppTheme();
   const styles = useMemo(() => makeStyles(), []);
   const [headerHeight] = useState(new Animated.Value(1));
@@ -146,6 +149,7 @@ const CalendarScreen = () => {
       <Animated.FlatList
         data={[0]}
         showsVerticalScrollIndicator={false}
+        onScroll={onScroll}
         ListFooterComponent={_renderBottomSpace}
         renderItem={() => {
           return (
@@ -161,7 +165,7 @@ const CalendarScreen = () => {
                 ItemSeparatorComponent={() => (
                   <Box height={scaledSize.moderateScale(16)} />
                 )}
-                scrollEventThrottle={20}
+                scrollEventThrottle={16}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={<Box height={scaledSize.deviceHeight} />}
               />
@@ -186,6 +190,9 @@ const makeStyles = () =>
       position: 'absolute',
     },
     bottomSpace: {
-      height: scaledSize.verticalScale(120),
+      height: Platform.select({
+        ios: getBottomSpace(),
+        android: scaledSize.moderateScale(22),
+      }),
     },
   });

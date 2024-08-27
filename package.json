@@ -46,6 +46,7 @@
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^15.5.0",
     "react-redux": "^9.1.2",
+    "recyclerlistview": "^4.2.1",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "redux-persist-transform-compress": "^4.2.0",
